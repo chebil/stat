@@ -1,19 +1,13 @@
 # Book settings
 title: "Probability and Statistics for Computer Science"
 author: "Based on David Forsyth's textbook"
-logo: ""
 copyright: "2025"
 
 # Force re-execution of notebooks on each build
 execute:
-  execute_notebooks: 'off'  # Changed to 'off' to speed up builds
+  execute_notebooks: off
   allow_errors: false
   timeout: 300
-
-# Define the left-hand sidebar
-format:
-  html:
-    theme: cosmo
 
 # Add a bibtex file for citations
 bibtex_bibfiles:
@@ -29,45 +23,18 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-  baseurl: /stat/  # This sets the base URL to chebil.github.io/stat
-  favicon: ""
+  baseurl: /stat/
   home_page_in_navbar: true
   use_edit_page_button: false
   use_download_button: true
-  extra_footer: |
-    <div>
-      Built with <a href="https://jupyterbook.org">Jupyter Book</a>
-    </div>
 
-# Launch buttons for interactive content
+# Launch buttons for interactive content  
 launch_buttons:
-  notebook_interface: "classic"
-  binderhub_url: ""
-  colab_url: "https://colab.research.google.com"
+  notebook_interface: classic
+  colab_url: https://colab.research.google.com
 
-# Specify the bibliography
+# Sphinx configuration
 sphinx:
   config:
     bibtex_reference_style: author_year
-    html_baseurl: 'https://chebil.github.io/stat/'
-    html_theme: sphinx_book_theme
-    html_theme_options:
-      repository_url: https://github.com/chebil/stat
-      use_repository_button: true
-      use_issues_button: true
-      use_edit_page_button: false
-      use_download_button: true
-      path_to_docs: ""
-      repository_branch: main
-      home_page_in_toc: true
-      show_toc_level: 2
-      navigation_with_keys: true
-    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    mathjax3_config:
-      tex:
-        macros:
-          "N": "\\mathbb{N}"
-          "R": "\\mathbb{R}"
-          "E": "\\mathbb{E}"
-          "Var": "\\text{Var}"
-          "Cov": "\\text{Cov}"
+    html_baseurl: https://chebil.github.io/stat/
