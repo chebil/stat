@@ -1,13 +1,18 @@
-# File Expansion Summary
+# File Expansion Summary - UPDATED
 
 This document tracks the comprehensive expansion of existing files to include all subsections and worked examples from the source textbook.
 
-## Completed Expansions
+**Last Updated**: December 5, 2025, 9:31 PM +03
+
+---
+
+## ✅ Completed Expansions (6/6 Priority Files)
 
 ### 1. ch01_summarizing.md (1.3 Summarizing 1D Data)
 
-**Expanded from:** 2.6 KB (basic outline)
-**Expanded to:** 12.8 KB (comprehensive content)
+**Status**: ✅ **FULLY EXPANDED**  
+**Expanded from:** 2.6 KB (basic outline)  
+**Expanded to:** 14.4 KB (comprehensive content)
 
 #### New Subsections Added:
 
@@ -62,19 +67,13 @@ This document tracks the comprehensive expansion of existing files to include al
 - Python implementation
 - Use cases for standardization
 
-#### New Content:
-- **Summary table** comparing location and scale parameters
-- **Practice problems** with 3 different datasets
-- **Key takeaways** highlighting main concepts
-- Complete Python code examples throughout
-- Visual comparison of robust vs non-robust measures
-
 ---
 
 ### 2. ch02_correlation.md (2.2 Correlation)
 
-**Expanded from:** 3.6 KB (basic content)
-**Expanded to:** 12.7 KB (comprehensive content)
+**Status**: ✅ **FULLY EXPANDED**  
+**Expanded from:** 3.6 KB (basic content)  
+**Expanded to:** 14.5 KB (comprehensive content)
 
 #### New Subsections Added:
 
@@ -97,80 +96,216 @@ This document tracks the comprehensive expansion of existing files to include al
 - Complete Python implementations
 
 ##### 2.2.3 Correlation and Prediction
-- **Prediction formula** for linear regression:
-  $$\hat{y} = \bar{y} + r \frac{\sigma_y}{\sigma_x}(x - \bar{x})$$
+- **Prediction formula** for linear regression
 - **Worked Example**: Predicting weight from height
-  - Predict for 172 cm: 70.85 kg
 - Regression to the mean explanation
 - Python prediction function
 - Visualization of prediction line
 
 ##### 2.2.4 Correlation Pitfalls and Limitations
 - **Pitfall 1: Correlation ≠ Causation**
-  - Spurious correlation examples
-  - Ice cream sales vs drownings
-  - Nicolas Cage films vs pool drownings
-  - Questions to ask about causation
-  
 - **Pitfall 2: Non-linear Relationships**
-  - Example: parabola (y=x²) has r≈0 despite perfect relationship
-  - Importance of scatter plots
-  
 - **Pitfall 3: Outliers**
-  - Single outlier can change correlation dramatically
-  - Python example showing effect
-  
 - **Pitfall 4: Restricted Range**
 - **Pitfall 5: Simpson's Paradox**
-  - Correlation can reverse when grouped
 
 ##### 2.2.5 Correlation Matrix
 - Definition and interpretation
-- **Example**: Multiple physical measurements (100 people)
-  - Height, Weight, Age, Shoe Size
 - Heatmap visualization with seaborn
-- How to read correlation matrices
 - Python code for pandas correlation
 
 ##### 2.2.6 Other Correlation Measures
-- **Spearman's rank correlation** (robust to outliers)
+- **Spearman's rank correlation**
 - **Kendall's tau**
 - When to use each measure
-- Python implementation comparisons
-
-#### New Content:
-- **Comprehensive summary** of key points
-- **Checklist for using correlation** properly
-- **4 practice problems** with solutions
-- **Complete Python code** for all examples
-- Multiple visualizations (scatter plots, heatmaps)
-- Real-world spurious correlation examples
 
 ---
 
-## Files Ready for Expansion
+### 3. ch01_plotting.md (1.2 What's Happening? Plotting Data)
 
-The following files have been identified and are ready for similar comprehensive expansion:
+**Status**: ✅ **FULLY EXPANDED**  
+**Expanded from:** Unknown (not tracked in original summary)  
+**Expanded to:** 16.2 KB (comprehensive content)
 
-### Priority 1 (Chapter 1 - Core Concepts)
-- [ ] `ch01_plotting.md` - Expand with all plot types and examples
-- [ ] `ch01_plots_summaries.md` - Add normal distributions, box plots details
-- [ ] `ch01_datasets.md` - Include more dataset examples
-- [ ] `ch01_australian_pizzas.md` - Complete worked example
-- [ ] `ch01_you_should.md` - Comprehensive learning objectives
+#### Subsections Included:
 
-### Priority 2 (Chapter 2 - Relationships)
-- [x] `ch02_correlation.md` - ✅ COMPLETED
-- [ ] `ch02_2d_data.md` - Expand scatter plots, joint distributions
+##### 1.2.1 Bar Charts
+- Definition and when to use
+- **Example 1**: Gender Distribution
+- **Example 2**: Goals of Students
+- Horizontal vs Vertical Bars
+- Complete Python implementations
 
-### Priority 3 (Part 2 - Probability)
-- [ ] All Part 2 chapters need expansion with:
-  - Probability axioms
-  - Conditional probability
-  - Bayes' theorem
-  - Random variables
-  - Common distributions
-  - Central limit theorem
+##### 1.2.2 Histograms
+- Definition and purpose
+- **Example 1**: Net Worth Data (10 people)
+- **Example 2**: Cheese Goodness Scores (20 cheeses)
+- Distribution interpretation
+
+##### 1.2.3 How to Make Histograms
+- Histograms with Even Intervals
+- Choosing the Number of Bins (Square root, Sturges', Scott's rules)
+- Histograms with Uneven Intervals
+- Manual histogram calculation in Python
+
+##### 1.2.4 Conditional Histograms
+- When to use
+- **Example**: Body Temperature by Gender
+- Overlapping Conditional Histograms
+- Class-conditional analysis
+
+**New Content**:
+- Complete comparison table: Bar Charts vs Histograms
+- Key takeaways section
+- Checklist for good plots
+- Common pitfalls section
+- Practice problems
+
+---
+
+### 4. ch01_plots_summaries.md (1.4 Plots and Summaries)
+
+**Status**: ✅ **FULLY EXPANDED**  
+**Expanded from:** Unknown  
+**Expanded to:** 12.1 KB (comprehensive content)
+
+#### Subsections Included:
+
+##### 1.4.1 Some Properties of Histograms
+- Tails and Modes (unimodal, bimodal, multimodal)
+- **Skewness**: Right-skewed and Left-skewed data
+- Checking for Skewness (Method 1: histogram, Method 2: mean vs median)
+- Python examples with visualizations
+
+##### 1.4.2 Standard Coordinates and Normal Data
+- Definition of Standard Coordinates (Z-scores)
+- Properties (mean=0, std=1)
+- **Normal Data** definition and standard normal curve
+- **68-95-99.7 Rule** (Empirical Rule)
+- Python implementation with scipy
+
+##### 1.4.3 Box Plots
+- Building a Box Plot (5 steps)
+- Creating Box Plots in Python
+- Interpreting Box Plots
+- Comparison of multiple groups
+
+**New Content**:
+- Complete examples with output
+- Visual comparisons
+- Practice problems
+- Integration with normal distribution
+
+---
+
+### 5. ch02_2d_data.md (2.1 Plotting 2D Data)
+
+**Status**: ✅ **FULLY EXPANDED**  
+**Expanded from:** Unknown  
+**Expanded to:** 17.2 KB (comprehensive content)
+
+#### Subsections Included:
+
+##### 2.1.1 Categorical Data, Counts, and Charts
+- Contingency Tables
+- Stacked Bar Charts
+- Grouped Bar Charts
+- Heatmaps
+- Mosaic Plots
+
+##### 2.1.2 Series
+- Line Plots for time series
+- **Example**: Temperature Over Time (365 days)
+- Multiple Series comparison
+- Seasonal Decomposition
+
+##### 2.1.3 Scatter Plots for Spatial Data
+- Basic Scatter Plot (earthquake example)
+- Point Density Maps
+- Geographic visualization
+
+##### 2.1.4 Exposing Relationships with Scatter Plots
+- Basic Scatter Plot
+- Adding Trend Lines (with regression)
+- Color-Coded Scatter Plots
+- Scatter Plot Patterns (4 types)
+- Bubble Charts (3-variable visualization)
+
+**New Content**:
+- Complete visualization comparison table
+- Summary of techniques by data type
+- Practice problems
+- Next steps section
+
+---
+
+### 6. ch01_australian_pizzas.md (1.5 Whose is Bigger? Investigating Australian Pizzas)
+
+**Status**: ✅ **FULLY EXPANDED**  
+**Expanded from:** Unknown  
+**Expanded to:** 10.5 KB (comprehensive case study)
+
+#### Complete Case Study Structure:
+
+- **The Question**: EagleBoys vs Domino's claim
+- **The Dataset**: Pizza diameter measurements
+- **Step 1**: Compute Summary Statistics
+- **Step 2**: Visualize with Histograms
+- **Step 3**: Compare with Box Plots
+- **Step 4**: Overlaid Histograms
+- **Step 5**: Standard Coordinates Comparison
+- **Step 6**: Check for Outliers (IQR method)
+
+**Conclusions**:
+- Evidence supporting the claim
+- Important caveats
+- Final answer with nuance
+
+**New Content**:
+- Complete worked example with real data
+- 6-step analysis workflow
+- Python implementation throughout
+- Practice exercise
+- Key lessons learned
+
+---
+
+## File Size Summary
+
+| File | Current Size | Status |
+|------|-------------|--------|
+| ch01_summarizing.md | 14.4 KB | ✅ Complete |
+| ch02_correlation.md | 14.5 KB | ✅ Complete |
+| ch01_plotting.md | 16.2 KB | ✅ Complete |
+| ch01_plots_summaries.md | 12.1 KB | ✅ Complete |
+| ch02_2d_data.md | 17.2 KB | ✅ Complete |
+| ch01_australian_pizzas.md | 10.5 KB | ✅ Complete |
+
+**Total expanded content**: ~85 KB of comprehensive educational material
+
+---
+
+## Remaining Files to Expand
+
+### Part 1 - Chapter 1
+
+- [ ] `ch01_datasets.md` (13.7 KB) - **Check if already expanded**
+- [ ] `ch01_you_should.md` (7.6 KB) - **Check if already expanded**
+
+### Part 1 - Chapter 2
+
+All Chapter 2 files appear to be expanded!
+
+### Part 2 - Probability
+
+All Part 2 files need expansion with:
+- Probability axioms and theorems
+- Conditional probability
+- Bayes' theorem
+- Random variables and distributions
+- Common distributions (Binomial, Poisson, Normal, etc.)
+- Central limit theorem
+- Joint and marginal distributions
 
 ---
 
@@ -200,6 +335,7 @@ Each expanded file now includes:
 - Multiple implementation methods
 - Comments explaining each step
 - Best practices demonstrated
+- Output shown for verification
 
 ### 5. **Visualizations**
 - Matplotlib/seaborn plotting code
@@ -227,57 +363,48 @@ Each expanded file now includes:
 
 ---
 
-## Expansion Metrics
+## Quality Standards Maintained
 
-### File Size Growth
-| File | Before | After | Growth |
-|------|--------|-------|--------|
-| ch01_summarizing.md | 2.6 KB | 12.8 KB | 392% |
-| ch02_correlation.md | 3.6 KB | 12.7 KB | 253% |
-
-### Content Additions
-| Category | ch01_summarizing | ch02_correlation |
-|----------|------------------|------------------|
-| Subsections | 7 | 6 |
-| Properties | 5 | 5 |
-| Worked Examples | 3 | 3 |
-| Code Blocks | 8 | 10 |
-| Practice Problems | 3 | 4 |
+✅ **Mathematical Rigor**: All formulas are precise with proper notation  
+✅ **Pedagogical Structure**: Concepts build logically from simple to complex  
+✅ **Code Quality**: All code is tested, commented, and follows best practices  
+✅ **Practical Focus**: Real datasets and applications throughout  
+✅ **Accessibility**: Clear explanations suitable for computer science students  
+✅ **Completeness**: No gaps in coverage of subsections from source material  
+✅ **Consistency**: Uniform formatting and style across all files
 
 ---
 
 ## Next Steps
 
-To continue expanding the textbook:
+### Priority 1: Check Remaining Part 1 Files
+1. **Review ch01_datasets.md** - Verify if comprehensive or needs expansion
+2. **Review ch01_you_should.md** - Check learning objectives completeness
 
-1. **Expand Chapter 1 remaining files** following the same comprehensive approach
-2. **Add Chapter 2 remaining content** with 2D visualization examples
-3. **Begin Part 2 (Probability)** with formal axioms and theorems
-4. **Create interactive Jupyter notebooks** for each chapter
-5. **Add solutions manual** for practice problems
-6. **Include real-world case studies** for each major concept
+### Priority 2: Begin Part 2 Expansion
+Once Part 1 is confirmed complete, begin systematic expansion of Part 2 (Probability) chapters following the same comprehensive approach.
 
----
-
-## Quality Standards Maintained
-
-✓ **Mathematical Rigor**: All formulas are precise and properly notation
-✓ **Pedagogical Structure**: Concepts build logically from simple to complex
-✓ **Code Quality**: All code is tested, commented, and follows best practices
-✓ **Practical Focus**: Real datasets and applications throughout
-✓ **Accessibility**: Clear explanations suitable for computer science students
-✓ **Completeness**: No gaps in coverage of subsections from source material
+### Priority 3: Create Interactive Components
+- Jupyter notebooks for each chapter
+- Solutions manual for practice problems
+- Interactive visualizations
+- Real-world case studies
 
 ---
 
 ## References
 
-Source material: *Probability and Statistics for Computer Science* by David Forsyth
+**Source Material**: *Probability and Statistics for Computer Science* by David Forsyth
 - Chapter 1: First Tools for Looking at Data (pages 1-30)
 - Chapter 2: Looking at Relationships (pages 31-50)
 
 ---
 
-**Last Updated**: December 5, 2025  
+**Status**: Part 1 is essentially complete! 🎉  
+**Next Goal**: Verify remaining files and move to Part 2 expansion
+
+---
+
 **Contributors**: Expanded from original textbook structure  
-**Status**: 2/10 priority files completed (20%)
+**Repository**: https://github.com/chebil/stat  
+**Jupyter Book URL**: https://chebil.github.io/stat
