@@ -10,7 +10,7 @@ Bar charts are particularly useful for **categorical data**. For example, consid
 - Gender of students (Boy/Girl)
 - Goals students value (Grades/Popular/Sports)
 
-```{figure} ../images/part1/fig-bar-charts.png
+```{figure} images/fig_1_1_bar_charts.png
 :name: fig-bar-charts
 :width: 90%
 
@@ -32,7 +32,7 @@ Drawing a bar chart in the obvious way—one bar per value—produces a mess of 
 
 A simple generalization of a bar chart is a **histogram**. We divide the range of the data into intervals, which do not need to be equal in length. We think of each interval as having an associated "pigeonhole," and choose one pigeonhole for each data item. We then build a set of boxes, one per interval. Each box sits on its interval on the horizontal axis, and its height is determined by the number of data items in the corresponding pigeonhole.
 
-```{figure} ../images/part1/fig-histograms.png
+```{figure} images/fig_1_2_histograms.png
 :name: fig-histograms
 :width: 90%
 
@@ -93,7 +93,7 @@ One possibility is gender. We can investigate this possibility by comparing:
 - A histogram of temperatures for males
 - A histogram of temperatures for females
 
-```{figure} ../images/part1/fig-conditional-histograms.png
+```{figure} images/fig_1_3_conditional_histograms.png
 :name: fig-conditional-histograms
 :width: 80%
 
