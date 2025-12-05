@@ -40,3 +40,16 @@ parts:
           title: "3.3 Independence"
         - file: part2/ch03_conditional
           title: "3.4 Conditional Probability"
+    - file: part2/chapter04
+      title: "Chapter 4: Random Variables and Expectations"
+      sections:
+        - file: part2/ch04_random_variables
+          title: "4.1 Random Variables"
+        - file: part2/ch04_expectations
+          title: "4.2 Expectations and Expected Values"
+        - file: part2/ch04_weak_law
+          title: "4.3 Weak Law of Large Numbers"
+        - file: part2/ch04_applications
+          title: "4.4 Applications"
+    - file: part2/chapter05
+      title: "Chapter 5: Useful Probability Distributions"

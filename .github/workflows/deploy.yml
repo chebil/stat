@@ -34,12 +34,33 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install --upgrade pip
           pip install jupyter-book
-          pip install ghp-import
+          pip install -r requirements.txt
+
+      - name: List files for debugging
+        run: |
+          echo "=== Repository Structure ==="
+          ls -la
+          echo "=== Part 1 files ==="
+          ls -la part1/ || echo "part1 directory not found"
+          echo "=== Part 2 files ==="
+          ls -la part2/ || echo "part2 directory not found"
 
       - name: Build the book
         run: |
-          jupyter-book build .
+          echo "Building Jupyter Book..."
+          jupyter-book build . --verbose --all
+
+      - name: Check build output
+        run: |
+          if [ ! -d "_build/html" ]; then
+            echo "ERROR: Build output directory _build/html does not exist."
+            echo "Build may have failed. Check the jupyter-book build output above."
+            exit 1
+          fi
+          echo "SUCCESS: _build/html directory exists"
+          ls -la _build/html/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
