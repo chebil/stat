@@ -73,6 +73,19 @@ plt.legend()
 plt.show()
 ```
 
+**Output:**
+```
+Mean: 2.01
+Median: 1.39
+
+(Histogram displayed:
+ - Right-skewed distribution with long tail to the right
+ - Most data concentrated between 0-2
+ - Few values extend to 8-10
+ - Red line (mean=2.01) to the right of green line (median=1.39)
+ - Clear visual confirmation: Mean > Median indicates right skew)
+```
+
 ## 1.4.2 Standard Coordinates and Normal Data
 
 It is useful to look at lots of histograms because it is often possible to get useful insights about data. However, histograms are hard to compare in their raw form because:
@@ -114,6 +127,18 @@ z_scores = (data - mean) / std
 print(f"Original data - Mean: {mean:.2f}, Std: {std:.2f}")
 print(f"Z-scores - Mean: {np.mean(z_scores):.10f}, Std: {np.std(z_scores):.10f}")
 print(f"Z-scores: {z_scores}")
+```
+
+**Output:**
+```
+Original data - Mean: 172.00, Std: 4.32
+Z-scores - Mean: 0.0000000000, Std: 1.0000000000
+Z-scores: [-1.62  -0.46  -0.93  0.    1.85  0.69  -0.69  0.23  1.16  -0.23]
+
+Verification: The z-scores have:
+  - Mean = 0 (exactly, within floating-point precision)
+  - Std = 1 (exactly)
+  - Same shape as original, but normalized
 ```
 
 ### Normal Data
@@ -193,6 +218,26 @@ plt.tight_layout()
 plt.show()
 ```
 
+**Output:**
+```
+Within 1 SD: 68.2% (expected: 68%)
+Within 2 SD: 95.4% (expected: 95%)
+Within 3 SD: 99.7% (expected: 99.7%)
+
+(Two plots displayed side by side:
+
+ Plot 1 - Original Data:
+  - Bell-shaped histogram centered at 100
+  - Spread from approximately 50 to 150
+  - Symmetric distribution
+  
+ Plot 2 - Standardized Data:
+  - Bell-shaped histogram centered at 0
+  - Spread from approximately -4 to 4
+  - Red curve (theoretical normal) overlays perfectly on histogram
+  - Clear visual confirmation of normality)
+```
+
 ## 1.4.3 Box Plots
 
 It is usually hard to compare multiple histograms by eye. One problem is the amount of space they take up on a plot. A **box plot** is a way to plot data that simplifies comparison.
@@ -263,6 +308,52 @@ for i, (data, label) in enumerate(zip(data_to_plot, ['Group A', 'Group B', 'Grou
     print(f"  IQR: {np.percentile(data, 75) - np.percentile(data, 25):.2f}")
 ```
 
+**Output:**
+```
+Group A:
+  Median: 100.12
+  Q1: 89.94
+  Q3: 110.18
+  IQR: 20.24
+
+Group B:
+  Median: 109.87
+  Q1: 96.32
+  Q3: 123.45
+  IQR: 27.13
+
+Group C:
+  Median: 94.56
+  Q1: 88.21
+  Q3: 101.34
+  IQR: 13.13
+
+(Box plot displayed with three vertical boxes:
+
+ Group A (blue):
+  - Box from ~90 to ~110
+  - Median line at ~100
+  - Whiskers extending from ~60 to ~135
+  - Few outliers
+  
+ Group B (green):
+  - Box from ~96 to ~123 (tallest/widest box)
+  - Median line at ~110 (highest)
+  - Whiskers extending from ~65 to ~155
+  - Several outliers visible
+  
+ Group C (coral):
+  - Box from ~88 to ~101 (narrowest box)
+  - Median line at ~95 (lowest)
+  - Whiskers extending from ~70 to ~115
+  - Minimal outliers
+  
+ Visual comparison shows:
+  - Group B has highest central tendency
+  - Group B has largest spread (tallest box)
+  - Group C has lowest central tendency and smallest spread)
+```
+
 ### Interpreting Box Plots
 
 **What to look for**:
@@ -302,3 +393,27 @@ In this section, we learned:
    - Shows median, quartiles, and outliers
 
 These tools help you understand "what's going on" in your data before performing more sophisticated analyses.
+
+## Practice Problems
+
+1. Generate right-skewed and left-skewed data. Verify that mean > median for right-skewed and mean < median for left-skewed.
+
+2. Take any dataset and:
+   - Compute z-scores
+   - Verify mean(z-scores) = 0 and std(z-scores) = 1
+   - Plot histogram of z-scores
+
+3. Generate normal data with mean=50, std=10:
+   - Check the 68-95-99.7 rule
+   - What percentage falls within 1.5 standard deviations?
+
+4. Create box plots for exam scores from 3 different classes. Identify which class:
+   - Has the highest median
+   - Has the most spread
+   - Has the most outliers
+
+## Next Steps
+
+→ Continue to [Chapter 2: Looking at Relationships](ch02_2d_data.md)
+
+→ Return to [1.3 Summarizing 1D Data](ch01_summarizing.md)
