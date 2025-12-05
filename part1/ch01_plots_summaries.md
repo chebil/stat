@@ -10,13 +10,6 @@ The **tails** of a histogram are the relatively uncommon values that are signifi
 
 A histogram is **unimodal** if there is only one peak; if there are more than one, it is **multimodal**, with the special term **bimodal** sometimes being used for the case where there are two peaks.
 
-```{figure} #path-to-figure
-:name: fig-histogram-modes
-:width: 80%
-
-Examples of unimodal, bimodal, and multimodal histograms. Multiple peaks often suggest that there are actually two or more populations being conflated.
-```
-
 ### Skewness
 
 The histograms we have seen have been relatively **symmetric**, where the left and right tails are about as long as one another. Not all data is symmetric. In some datasets, one or another tail is longer. This effect is called **skew**.
@@ -24,13 +17,6 @@ The histograms we have seen have been relatively **symmetric**, where the left a
 **Skew appears often in real data.** For example, consider a dataset of citations to faculty publications. Generally, a small number of papers get many citations, and many papers get few citations. These histograms are very different from, say, body temperature pictures.
 
 #### Right-Skewed Data
-
-```{figure} #path-to-figure
-:name: fig-right-skew
-:width: 60%
-
-Histogram of citations for a faculty member. Very few publications have many citations, and many publications have few. This means the histogram is strongly right-skewed.
-```
 
 In **right-skewed** (or positively skewed) data:
 - There are many small data items
@@ -45,12 +31,6 @@ In **right-skewed** (or positively skewed) data:
 - Constrained minimums
 
 #### Left-Skewed Data
-
-```{figure} #path-to-figure
-:width: 60%
-
-Histogram of birth weights for babies. This data appears somewhat left-skewed, as birth weights can be a lot smaller than the mean, but tend not to be much larger.
-```
 
 In **left-skewed** (or negatively skewed) data:
 - There are many large data items
@@ -142,8 +122,8 @@ An extremely important fact about data is that **for many kinds of data, histogr
 - It is symmetric and unimodal
 - It looks like a "bell curve"
 
-```{figure} #path-to-figure
-:name: fig-normal-curve
+```{figure} images/fig_1_4_standard_normal.png
+:name: fig-standard-normal
 :width: 80%
 
 The standard normal curve. Many different datasets (oyster volumes, human heights, human weights) have histograms that closely approximate this shape when plotted in standard coordinates.
@@ -237,11 +217,11 @@ A box plot displays a dataset as a vertical picture:
 - From Q1 to the smallest non-outlier data item
 - From Q3 to the largest non-outlier data item
 
-```{figure} #path-to-figure
-:name: fig-boxplot-example
-:width: 60%
+```{figure} images/fig_1_5_boxplots.png
+:name: fig-boxplots
+:width: 70%
 
-Example box plots comparing multiple datasets. The rich graphical structure makes it straightforward to compare distributions.
+Example box plots comparing multiple datasets. The rich graphical structure makes it straightforward to compare distributions. Each box shows the median (line), interquartile range (box), and data range (whiskers).
 ```
 
 ### Creating Box Plots in Python
