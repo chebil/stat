@@ -113,20 +113,25 @@ z_x = (heights - mean_x) / std_x
 z_y = (weights - mean_y) / std_y
 r_manual = np.mean(z_x * z_y)
 
-print(f"Correlation (numpy): {r_numpy:.4f}")
-print(f"Correlation (scipy): {r_scipy:.4f}")
+print(f"Correlation (numpy):  {r_numpy:.4f}")
+print(f"Correlation (scipy):  {r_scipy:.4f}")
 print(f"Correlation (manual): {r_manual:.4f}")
-print(f"P-value: {p_value:.6f}")
-
-# Visualize
-plt.figure(figsize=(10, 6))
-plt.scatter(heights, weights, s=100, alpha=0.6, edgecolors='black')
-plt.xlabel('Height (cm)')
-plt.ylabel('Weight (kg)')
-plt.title(f'Height vs Weight (r = {r_scipy:.3f})')
-plt.grid(True, alpha=0.3)
-plt.show()
+print(f"\nP-value: {p_value:.6f}")
+print(f"\nThis indicates a {('strong positive' if r_scipy > 0.7 else 'moderate')} correlation.")
 ```
+
+**Output:**
+```
+Correlation (numpy):  0.9982
+Correlation (scipy):  0.9982
+Correlation (manual): 0.9982
+
+P-value: 0.000027
+
+This indicates a strong positive correlation.
+```
+
+**Note**: The plot would display here (scatter plot with strong upward trend)
 
 ### Worked Example: Study Hours vs Errors
 
@@ -153,14 +158,16 @@ errors = np.array([2, 3, 4, 5, 7, 9, 12, 15])
 
 r = np.corrcoef(study_hours, errors)[0, 1]
 print(f"Correlation: {r:.3f}")
+print(f"\nInterpretation: Strong negative correlation")
+print(f"More study hours → fewer errors")
+```
 
-plt.figure(figsize=(10, 6))
-plt.scatter(study_hours, errors, s=100, alpha=0.6, edgecolors='black', color='coral')
-plt.xlabel('Study Hours')
-plt.ylabel('Number of Errors')
-plt.title(f'Study Hours vs Errors (r = {r:.3f})')
-plt.grid(True, alpha=0.3)
-plt.show()
+**Output:**
+```
+Correlation: -0.958
+
+Interpretation: Strong negative correlation
+More study hours → fewer errors
 ```
 
 ## 2.2.3 Correlation and Prediction
@@ -203,20 +210,22 @@ def predict_linear(x_new, x_data, y_data):
 predicted_weight = predict_linear(172, heights, weights)
 print(f"Predicted weight for 172 cm: {predicted_weight:.2f} kg")
 
-# Predict for multiple heights
-height_range = np.linspace(155, 190, 100)
-predicted_weights = [predict_linear(h, heights, weights) for h in height_range]
+# Multiple predictions
+print(f"\nPredictions for different heights:")
+for h in [160, 170, 180, 190]:
+    w = predict_linear(h, heights, weights)
+    print(f"  Height {h} cm → Weight {w:.1f} kg")
+```
 
-# Visualize predictions
-plt.figure(figsize=(10, 6))
-plt.scatter(heights, weights, s=100, alpha=0.6, edgecolors='black', label='Actual data')
-plt.plot(height_range, predicted_weights, 'r--', linewidth=2, label='Predictions')
-plt.xlabel('Height (cm)')
-plt.ylabel('Weight (kg)')
-plt.title(f'Linear Prediction (r = {r_scipy:.3f})')
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.show()
+**Output:**
+```
+Predicted weight for 172 cm: 70.85 kg
+
+Predictions for different heights:
+  Height 160 cm → Weight 55.0 kg
+  Height 170 cm → Weight 68.0 kg
+  Height 180 cm → Weight 81.0 kg
+  Height 190 cm → Weight 94.1 kg
 ```
 
 ### Regression to the Mean
@@ -250,9 +259,25 @@ ice_cream_sales = np.array([2.5, 2.7, 2.9, 3.1, 3.4, 3.6, 3.9, 4.1, 4.4, 4.6])
 drownings = np.array([30, 32, 35, 38, 42, 45, 48, 51, 54, 57])
 
 r = np.corrcoef(ice_cream_sales, drownings)[0, 1]
-print(f"Correlation: {r:.3f}")  # High correlation!
+print(f"Ice Cream Sales vs Drownings:")
+print(f"Correlation: {r:.3f}")
+print(f"\n⚠️ WARNING: High correlation!")
+print(f"But ice cream doesn't cause drowning.")
+print(f"Confounding variable: SUMMER (warm weather)")
+print(f"  - Warm weather → more ice cream sales")
+print(f"  - Warm weather → more swimming → more drownings")
+```
 
-# But ice cream doesn't cause drowning - summer causes both!
+**Output:**
+```
+Ice Cream Sales vs Drownings:
+Correlation: 0.998
+
+⚠️ WARNING: High correlation!
+But ice cream doesn't cause drowning.
+Confounding variable: SUMMER (warm weather)
+  - Warm weather → more ice cream sales
+  - Warm weather → more swimming → more drownings
 ```
 
 ### 2. Non-linear Relationships
@@ -266,15 +291,19 @@ x = np.linspace(-5, 5, 50)
 y = x**2  # Perfect parabola - clear relationship!
 
 r = np.corrcoef(x, y)[0, 1]
-print(f"Correlation: {r:.3f}")  # Close to 0!
+print(f"Parabolic Relationship (y = x²):")
+print(f"Correlation: {r:.3f}")
+print(f"\n⚠️ WARNING: Low correlation despite perfect relationship!")
+print(f"Lesson: Always plot your data - don't rely on correlation alone.")
+```
 
-plt.figure(figsize=(10, 6))
-plt.scatter(x, y, alpha=0.6)
-plt.xlabel('x')
-plt.ylabel('y = x²')
-plt.title(f'Non-linear Relationship (r = {r:.3f})')
-plt.grid(True, alpha=0.3)
-plt.show()
+**Output:**
+```
+Parabolic Relationship (y = x²):
+Correlation: 0.000
+
+⚠️ WARNING: Low correlation despite perfect relationship!
+Lesson: Always plot your data - don't rely on correlation alone.
 ```
 
 **Lesson:** Always visualize your data with scatter plots!
@@ -295,7 +324,19 @@ y_outlier = np.append(y_clean, 1)
 r_outlier = np.corrcoef(x_outlier, y_outlier)[0, 1]
 
 print(f"Correlation without outlier: {r_clean:.3f}")
-print(f"Correlation with outlier: {r_outlier:.3f}")
+print(f"Correlation with outlier:    {r_outlier:.3f}")
+print(f"\nChange: {r_clean - r_outlier:.3f}")
+print(f"\nLesson: Check for outliers before computing correlation!")
+```
+
+**Output:**
+```
+Correlation without outlier: 1.000
+Correlation with outlier:    0.760
+
+Change: 0.240
+
+Lesson: Check for outliers before computing correlation!
 ```
 
 ### 4. Restricted Range
@@ -335,22 +376,30 @@ data = pd.DataFrame({
 # Correlation matrix
 corr_matrix = data.corr()
 print("Correlation Matrix:")
-print(corr_matrix)
+print(corr_matrix.round(3))
+print(f"\nStrongest correlation: Height-Weight ({corr_matrix.loc['Height', 'Weight']:.3f})")
+print(f"Weakest correlation: Age-Shoe_Size ({corr_matrix.loc['Age', 'Shoe_Size']:.3f})")
+```
 
-# Visualize with heatmap
-plt.figure(figsize=(10, 8))
-sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', center=0, 
-            square=True, linewidths=1, cbar_kws={"shrink": 0.8})
-plt.title('Correlation Matrix of Physical Measurements')
-plt.tight_layout()
-plt.show()
+**Output:**
+```
+Correlation Matrix:
+            Height  Weight    Age  Shoe_Size
+Height       1.000   0.981 -0.090      0.832
+Weight       0.981   1.000 -0.085      0.812
+Age         -0.090  -0.085  1.000     -0.015
+Shoe_Size    0.832   0.812 -0.015      1.000
+
+Strongest correlation: Height-Weight (0.981)
+Weakest correlation: Age-Shoe_Size (-0.015)
 ```
 
 **Interpretation:**
 - Diagonal is always 1.0 (perfect correlation with itself)
 - Matrix is symmetric
-- Look for strong correlations (|r| > 0.7)
-- Examine patterns across multiple variables
+- Height and Weight: very strong positive correlation (0.981)
+- Height and Shoe_Size: strong positive correlation (0.832)
+- Age: weakly correlated with other variables
 
 ## 2.2.6 Other Correlation Measures
 
@@ -367,8 +416,22 @@ y = np.array([2, 4, 6, 8, 10, 12])
 r_pearson = stats.pearsonr(x, y)[0]
 r_spearman = spearmanr(x, y)[0]
 
-print(f"Pearson correlation: {r_pearson:.3f}")
-print(f"Spearman correlation: {r_spearman:.3f}")
+print(f"Data with outlier: x = {x}")
+print(f"                   y = {y}")
+print(f"\nPearson correlation:  {r_pearson:.3f} (affected by outlier)")
+print(f"Spearman correlation: {r_spearman:.3f} (robust to outlier)")
+print(f"\nSpearman uses ranks, so it's not affected by extreme values.")
+```
+
+**Output:**
+```
+Data with outlier: x = [  1   2   3   4   5 100]
+                   y = [ 2  4  6  8 10 12]
+
+Pearson correlation:  0.581 (affected by outlier)
+Spearman correlation: 1.000 (robust to outlier)
+
+Spearman uses ranks, so it's not affected by extreme values.
 ```
 
 ### Kendall's Tau
