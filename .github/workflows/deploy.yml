@@ -46,11 +46,15 @@ jobs:
           ls -la part1/ || echo "part1 directory not found"
           echo "=== Part 2 files ==="
           ls -la part2/ || echo "part2 directory not found"
+          echo "=== Config files ==="
+          cat _config.yml
+          echo "=== TOC file ==="
+          cat _toc.yml
 
       - name: Build the book
         run: |
           echo "Building Jupyter Book..."
-          jupyter-book build . --verbose --all
+          jupyter-book build . --all
 
       - name: Check build output
         run: |
