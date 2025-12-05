@@ -3,6 +3,16 @@ title: "Probability and Statistics for Computer Science"
 author: "Based on David Forsyth's textbook"
 copyright: "2025"
 
+# Exclude patterns to prevent reading directories as files
+exclude_patterns:
+  - .github/**
+  - .git/**
+  - _build/**
+  - .nojekyll
+  - requirements.txt
+  - README.md
+  - "**.ipynb_checkpoints"
+
 # Force re-execution of notebooks on each build
 execute:
   execute_notebooks: off
