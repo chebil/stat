@@ -26,6 +26,13 @@ print(f"EagleBoys: n = {len(eagleboys)}")
 print(f"Domino's: n = {len(dominos)}")
 ```
 
+**Output:**
+```
+EagleBoys: n = 20
+Domino's: n = 20
+```
+
+
 ## Step 1: Compute Summary Statistics
 
 Let's start by computing basic descriptive statistics for both datasets.
@@ -60,6 +67,24 @@ print(f"  Range: [{dom_min:.2f}, {dom_max:.2f}]")
 print(f"\nDifference in means: {eb_mean - dom_mean:.2f} cm")
 ```
 
+**Output:**
+```
+EagleBoys Pizza Diameters (cm):
+  Mean: 28.94
+  Std Dev: 0.21
+  Median: 28.95
+  Range: [28.50, 29.30]
+
+Domino's Pizza Diameters (cm):
+  Mean: 27.94
+  Std Dev: 0.21
+  Median: 27.95
+  Range: [27.50, 28.30]
+
+Difference in means: 1.00 cm
+```
+
+
 **Initial observations**:
 - EagleBoys pizzas have a larger mean diameter
 - Both datasets have similar standard deviations
@@ -93,6 +118,10 @@ axes[1].grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 ```
+
+**Output:**
+![Plot](images/output_8c61b8185e0c.png)
+
 
 ### What do the histograms tell us?
 
@@ -139,6 +168,26 @@ print(f"  Q3: {np.percentile(dominos, 75):.2f} cm")
 print(f"  IQR: {np.percentile(dominos, 75) - np.percentile(dominos, 25):.2f} cm")
 ```
 
+**Output:**
+```
+Quartile Analysis:
+
+EagleBoys:
+  Q1: 28.80 cm
+  Median (Q2): 28.95 cm
+  Q3: 29.10 cm
+  IQR: 0.30 cm
+
+Domino's:
+  Q1: 27.80 cm
+  Median (Q2): 27.95 cm
+  Q3: 28.10 cm
+  IQR: 0.30 cm
+```
+
+![Plot](images/output_321e371a654c.png)
+
+
 ### What does the box plot show?
 
 - **Medians**: EagleBoys median is clearly higher
@@ -171,6 +220,10 @@ plt.grid(True, alpha=0.3)
 plt.show()
 ```
 
+**Output:**
+![Plot](images/output_443fb0cd9d9f.png)
+
+
 ## Step 5: Standard Coordinates Comparison
 
 By converting to standard coordinates, we can compare the shapes of the distributions more objectively.
@@ -198,6 +251,16 @@ print("\nStandardized statistics:")
 print(f"EagleBoys: mean = {np.mean(eb_zscore):.2f}, std = {np.std(eb_zscore):.2f}")
 print(f"Domino's: mean = {np.mean(dom_zscore):.2f}, std = {np.std(dom_zscore):.2f}")
 ```
+
+**Output:**
+```
+Standardized statistics:
+EagleBoys: mean = 0.00, std = 1.00
+Domino's: mean = 0.00, std = 1.00
+```
+
+![Plot](images/output_e2ea6cd2211d.png)
+
 
 ## Step 6: Check for Outliers
 
@@ -228,6 +291,22 @@ def find_outliers(data, name):
 eb_outliers = find_outliers(eagleboys, "EagleBoys")
 dom_outliers = find_outliers(dominos, "Domino's")
 ```
+
+**Output:**
+```
+EagleBoys Outlier Analysis:
+  Lower bound: 28.35 cm
+  Upper bound: 29.55 cm
+  Number of outliers: 0
+  No outliers detected
+
+Domino's Outlier Analysis:
+  Lower bound: 27.35 cm
+  Upper bound: 28.55 cm
+  Number of outliers: 0
+  No outliers detected
+```
+
 
 ## Conclusions
 

@@ -28,6 +28,10 @@ prob_ace = num_aces / deck_size
 print(f"P(Ace) = {prob_ace:.4f} = {prob_ace:.1%}")
 ```
 
+**Output:**
+`P(Ace) = 0.0769 = 7.7%`
+
+
 ## Set Operations on Events
 
 ### Union (OR)
@@ -48,6 +52,14 @@ print(f"A ∪ B = {union}")
 print(f"A ∩ B = {intersection}")
 print(f"P(A ∪ B) = {len(union)/6:.4f}")
 ```
+
+**Output:**
+```
+A ∪ B = {2, 4, 5, 6}
+A ∩ B = {6}
+P(A ∪ B) = 0.6667
+```
+
 
 ### Intersection (AND)
 
@@ -75,6 +87,10 @@ total_passwords = num_digits ** password_length
 print(f"Possible 4-digit passwords: {total_passwords:,}")
 ```
 
+**Output:**
+`Possible 4-digit passwords: 10,000`
+
+
 ### Permutations
 
 Ordering $k$ items from $n$ items:
@@ -91,6 +107,10 @@ def permutations(n, k):
 print(f"P(5,3) = {permutations(5, 3)}")
 ```
 
+**Output:**
+`P(5,3) = 60`
+
+
 ### Combinations
 
 Choosing $k$ items from $n$ items (order doesn't matter):
@@ -104,6 +124,10 @@ from math import comb
 print(f"C(5,2) = {comb(5, 2)}")
 ```
 
+**Output:**
+`C(5,2) = 10`
+
+
 ## Example: Poker Hand
 
 ```python
@@ -116,6 +140,10 @@ flush_hands = 4 * comb(13, 5)
 prob_flush = flush_hands / total_hands
 print(f"P(flush) = {prob_flush:.6f} = {prob_flush:.4%}")
 ```
+
+**Output:**
+`P(flush) = 0.001981 = 0.1981%`
+
 
 ## Key Formulas
 

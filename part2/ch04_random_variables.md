@@ -34,6 +34,10 @@ plt.legend()
 plt.show()
 ```
 
+**Output:**
+![Plot](images/output_3abfcfd5a1df.png)
+
+
 ## Discrete Random Variables
 
 A random variable is **discrete** if it can take only a countable number of values.
@@ -94,6 +98,25 @@ for k in values:
     print(f"P(X = {k:2d}) = {theoretical_probs[k]:.4f}")
 ```
 
+**Output:**
+```
+Probability Mass Function:
+P(X =  2) = 0.0278
+P(X =  3) = 0.0556
+P(X =  4) = 0.0833
+P(X =  5) = 0.1111
+P(X =  6) = 0.1389
+P(X =  7) = 0.1667
+P(X =  8) = 0.1389
+P(X =  9) = 0.1111
+P(X = 10) = 0.0833
+P(X = 11) = 0.0556
+P(X = 12) = 0.0278
+```
+
+![Plot](images/output_0147716d783a.png)
+
+
 ## 4.1.1 Joint and Conditional Probability for Random Variables
 
 When working with multiple random variables, we need to understand their joint and conditional behavior.
@@ -149,6 +172,22 @@ for k, p in conditional_given_sum7.items():
     print(f"  P(D1={k} | Sum=7) = {p:.4f}")
 ```
 
+**Output:**
+```
+Joint Probability P(D1=1, D2=1): 0.027777777777777776
+
+Marginal P(D1=1): 0.16666666666666666
+
+Conditional P(D1 | D1+D2=7):
+  P(D1=1 | Sum=7) = 0.1667
+  P(D1=2 | Sum=7) = 0.1667
+  P(D1=3 | Sum=7) = 0.1667
+  P(D1=4 | Sum=7) = 0.1667
+  P(D1=5 | Sum=7) = 0.1667
+  P(D1=6 | Sum=7) = 0.1667
+```
+
+
 ### Independence
 
 Random variables $X$ and $Y$ are **independent** if:
@@ -165,6 +204,15 @@ print(f"P(D1=1, D2=1) = {joint_prob[(1,1)]:.6f}")
 print(f"P(D1=1) × P(D2=1) = {marginal_d1[1] * marginal_d2[1]:.6f}")
 print(f"Independent: {np.isclose(joint_prob[(1,1)], marginal_d1[1] * marginal_d2[1])}")
 ```
+
+**Output:**
+```
+Independence Check:
+P(D1=1, D2=1) = 0.027778
+P(D1=1) × P(D2=1) = 0.027778
+Independent: True
+```
+
 
 ## 4.1.2 Just a Little Continuous Probability
 
@@ -239,6 +287,12 @@ plt.show()
 print(f"P(0.3 ≤ X ≤ 0.7) = {stats.uniform.cdf(0.7) - stats.uniform.cdf(0.3):.2f}")
 ```
 
+**Output:**
+`P(0.3 ≤ X ≤ 0.7) = 0.40`
+
+![Plot](images/output_b810c4551f63.png)
+
+
 ### Example: Exponential Distribution
 
 The **exponential distribution** with rate $\lambda$ has PDF:
@@ -281,6 +335,15 @@ plt.show()
 print(f"Mean waiting time: {1/lambda_rate:.2f}")
 print(f"P(X ≤ 1) = {stats.expon.cdf(1, scale=1/lambda_rate):.3f}")
 ```
+
+**Output:**
+```
+Mean waiting time: 0.50
+P(X ≤ 1) = 0.865
+```
+
+![Plot](images/output_54852d451145.png)
+
 
 ## Summary
 

@@ -30,6 +30,14 @@ print(f"P(H1) × P(H2) = {prob_h:.4f} × {prob_h:.4f} = {prob_h**2:.4f}")
 print(f"Independent: {np.isclose(prob_hh, prob_h**2, atol=0.01)}")
 ```
 
+**Output:**
+```
+P(H1 and H2) = 0.2457
+P(H1) × P(H2) = 0.4978 × 0.4978 = 0.2478
+Independent: True
+```
+
+
 ### NOT Independent
 
 **Drawing cards without replacement**
@@ -46,6 +54,13 @@ print(f"P(both Aces) = {prob_both_aces:.6f}")
 wrong_calc = (4/52) * (4/52)
 print(f"If independent: {wrong_calc:.6f} (WRONG!)")
 ```
+
+**Output:**
+```
+P(both Aces) = 0.004525
+If independent: 0.005917 (WRONG!)
+```
+
 
 ## Multiplication Rule
 
@@ -71,6 +86,13 @@ parallel_reliability = 1 - (1 - comp_reliability) ** num_components
 print(f"Parallel system reliability: {parallel_reliability:.4f}")
 ```
 
+**Output:**
+```
+Series system reliability: 0.8574
+Parallel system reliability: 0.9999
+```
+
+
 ## Birthday Problem
 
 What's the probability that in a group of $n$ people, at least two share a birthday?
@@ -95,6 +117,16 @@ for n in [10, 20, 23, 30, 50]:
     print(f"n={n:2d}: P(match) = {prob:.4f} = {prob:.1%}")
 ```
 
+**Output:**
+```
+n=10: P(match) = 0.1169 = 11.7%
+n=20: P(match) = 0.4114 = 41.1%
+n=23: P(match) = 0.5073 = 50.7%
+n=30: P(match) = 0.7063 = 70.6%
+n=50: P(match) = 0.9704 = 97.0%
+```
+
+
 ## Testing Independence
 
 To check if $A$ and $B$ are independent:
@@ -118,6 +150,14 @@ def test_independence(prob_a, prob_b, prob_ab):
 # Example
 test_independence(0.5, 0.5, 0.25)  # Two fair coins
 ```
+
+**Output:**
+```
+P(A ∩ B) = 0.250000
+P(A) × P(B) = 0.250000
+Independent: True
+```
+
 
 ## Key Takeaways
 

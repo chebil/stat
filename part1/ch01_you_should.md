@@ -176,6 +176,22 @@ plt.tight_layout()
 plt.show()
 ```
 
+**Output:**
+```
+Mean: 32.0
+Median: 32.0
+Std Dev: 5.744562646538029
+Variance: 33.0
+Q1: 27.5
+Q3: 36.5
+IQR: 9.0
+Z-scores: [-1.5666989  -1.21854359 -0.87038828 -0.52223297 -0.17407766  0.17407766
+  0.52223297  0.87038828  1.21854359  1.5666989 ]
+```
+
+![Plot](images/output_ec74c8d879cb.png)
+
+
 ## Self-Check Questions
 
 1. If you multiply every data point by 3, what happens to the mean? The standard deviation?

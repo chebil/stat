@@ -71,6 +71,23 @@ print(f"Average profit per game: ${running_profit[-1]:.4f}")
 print(f"Total profit: ${total_profit:.2f}")
 ```
 
+**Output:**
+```
+Simple Bet Analysis:
+Cost to play: $1
+Expected winnings: $0.8333
+Expected profit: $-0.1667
+
+✗ Don't take the bet. Negative expected profit.
+
+After 10000 games:
+Average profit per game: $-0.1715
+Total profit: $-1715.00
+```
+
+![Plot](images/output_0ba42a18ef5c.png)
+
+
 ### Example: Lottery Ticket
 
 A lottery ticket costs $2. The prize structure is:
@@ -104,6 +121,22 @@ for prize, prob in zip(prizes[:3], probs[:3]):
     print(f"  ${prize:,} prize: contributes ${contribution:.4f} to expected value")
 ```
 
+**Output:**
+```
+Lottery Analysis:
+Ticket cost: $2
+Expected winnings: $0.1200
+Expected profit: $-1.8800
+
+✗ Don't buy! You'll lose $1.8800 per ticket on average.
+
+Breakdown:
+  $1,000,000 prize: contributes $0.1000 to expected value
+  $10,000 prize: contributes $0.0100 to expected value
+  $100 prize: contributes $0.0100 to expected value
+```
+
+
 ## The Gambler's Fallacy
 
 **Common Mistake**: "I've lost 5 times in a row, so I'm due to win!"
@@ -136,6 +169,18 @@ if wins_after_5_losses:
     print(f"Expected win rate: 0.400")
     print("\n→ Past losses don't predict future wins!")
 ```
+
+**Output:**
+```
+Gambler's Fallacy Check:
+Found 80 instances of 5 losses in a row
+Win rate after 5-loss streak: 0.350
+Overall win rate: 0.387
+Expected win rate: 0.400
+
+→ Past losses don't predict future wins!
+```
+
 
 ## 4.4.2 Odds, Expectations and Bookmaking
 
@@ -182,6 +227,24 @@ print(f"Expected return: ${expected_return_a:.2f}")
 print(f"Expected profit: ${expected_profit_a:.2f}")
 print("\n→ Bookmaker's margin ensures they profit!")
 ```
+
+**Output:**
+```
+Fair Odds (zero expected profit):
+Team A wins: 1.667
+Team B wins: 2.500
+
+Bookmaker's Odds (with 10.0% margin):
+Team A wins: 1.515
+Team B wins: 2.273
+
+Betting $10 on Team A:
+Expected return: $9.09
+Expected profit: $-0.91
+
+→ Bookmaker's margin ensures they profit!
+```
+
 
 ## 4.4.3 Ending a Game Early
 
@@ -237,6 +300,21 @@ print(f"\nFair split of ${total_prize}:")
 print(f"Player A gets: ${fair_split_a:.2f}")
 print(f"Player B gets: ${fair_split_b:.2f}")
 ```
+
+**Output:**
+```
+Problem of Points:
+Player A: 7 wins (needs 3 more)
+Player B: 5 wins (needs 5 more)
+
+Probability A wins overall: 0.7734
+Probability B wins overall: 0.2266
+
+Fair split of $1000:
+Player A gets: $773.44
+Player B gets: $226.56
+```
+
 
 ## 4.4.4 Making a Decision with Decision Trees
 
@@ -316,6 +394,23 @@ plt.tight_layout()
 plt.show()
 ```
 
+**Output:**
+```
+Medical Decision Analysis:
+
+No Surgery: Utility = 70
+
+Surgery:
+  Success (90.0%): Utility = 95
+  Complication (10.0%): Utility = 40
+  Expected utility = 89.5
+
+✓ Recommend surgery (expected utility 89.5 > 70)
+```
+
+![Plot](images/output_e7349f81fb5f.png)
+
+
 ## 4.4.5 Utility
 
 **Utility** represents the value or satisfaction from an outcome, not just monetary value.
@@ -382,6 +477,33 @@ print("\n→ Despite infinite expected value, most people wouldn't pay much to p
 print("   This is because utility isn't linear in money.")
 ```
 
+**Output:**
+```
+St. Petersburg Paradox:
+Theoretical expected value: Infinite
+
+Simulation (10000 games):
+Average winnings: $15.04
+Median winnings: $2.00
+Maximum won: $16,384
+95th percentile: $32
+
+Winnings distribution:
+  Won ≥ $2: 100.0%
+  Won ≥ $4: 50.0%
+  Won ≥ $8: 25.0%
+  Won ≥ $16: 12.8%
+  Won ≥ $32: 6.2%
+  Won ≥ $64: 2.9%
+  Won ≥ $128: 1.4%
+
+→ Despite infinite expected value, most people wouldn't pay much to play!
+   This is because utility isn't linear in money.
+```
+
+![Plot](images/output_d611bf3db3a4.png)
+
+
 ### Logarithmic Utility
 
 A common utility function: $U(x) = \log(x)$
@@ -422,6 +544,19 @@ for w in [10000, 100000, 1000000]:
     print(f"At ${w:,}: Linear = {linear_marginal:,}, Log = {log_marginal:.4f}")
 print("\n→ Logarithmic utility shows diminishing marginal value!")
 ```
+
+**Output:**
+```
+Marginal utility (value of next $100k):
+At $10,000: Linear = 100,000, Log = 2.3979
+At $100,000: Linear = 100,000, Log = 0.6931
+At $1,000,000: Linear = 100,000, Log = 0.0953
+
+→ Logarithmic utility shows diminishing marginal value!
+```
+
+![Plot](images/output_6d5b56d9bfea.png)
+
 
 ## Summary
 

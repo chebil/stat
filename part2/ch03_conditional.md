@@ -34,6 +34,15 @@ print(f"Even outcomes in B: {A & B}")
 print(f"So P(even | >3) = 2/3 = {2/3:.4f}")
 ```
 
+**Output:**
+```
+P(A|B) = 0.6667
+Given roll > 3, restricted to {4, 5, 6}
+Even outcomes in B: {4, 6}
+So P(even | >3) = 2/3 = 0.6667
+```
+
+
 ## Multiplication Rule
 
 Rearranging the definition:
@@ -73,6 +82,13 @@ prob_disease_given_pos = (prob_pos_given_disease * prob_disease) / prob_pos
 print(f"P(disease | +test) = {prob_disease_given_pos:.4f}")
 print(f"Only {prob_disease_given_pos:.1%} chance of disease even with positive test!")
 ```
+
+**Output:**
+```
+P(disease | +test) = 0.0194
+Only 1.9% chance of disease even with positive test!
+```
+
 
 ## The Monty Hall Problem
 
@@ -123,6 +139,15 @@ print(f"Win rate (stay):   {prob_win_stay:.4f}")
 print(f"Win rate (switch): {prob_win_switch:.4f}")
 print(f"\nSwitching is {prob_win_switch/prob_win_stay:.1f}x better!")
 ```
+
+**Output:**
+```
+Win rate (stay):   0.3288
+Win rate (switch): 0.6666
+
+Switching is 2.0x better!
+```
+
 
 ### Explanation
 

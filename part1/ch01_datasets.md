@@ -105,6 +105,10 @@ plt.show()
 Frequencies: Counter({'Red': 5, 'Blue': 4, 'Green': 2, 'Yellow': 1})
 Mode: Red
 ```
+
+![Plot](images/output_d09ec5dcf3ec.png)
+
+
 (Bar chart displayed with Red=5, Blue=4, Green=2, Yellow=1)
 
 ### 2. Ordinal Data
@@ -156,6 +160,10 @@ plt.show()
 Median rating: Good
 Mode rating: Good
 ```
+
+![Plot](images/output_b20444f4809c.png)
+
+
 (Bar chart displayed: Poor=1, Fair=2, Good=4, Excellent=3)
 
 ### 3. Continuous Data
@@ -197,9 +205,13 @@ plt.show()
 **Output:**
 ```
 Mean height: 171.07 cm
-Median height: 170.75 cm
-Std deviation: 3.54 cm
+Median height: 170.70 cm
+Std deviation: 3.47 cm
 ```
+
+![Plot](images/output_eb9c2fa95edd.png)
+
+
 (Histogram displayed showing distribution centered around 171 cm)
 
 ### 4. Discrete Data
@@ -239,10 +251,14 @@ plt.show()
 
 **Output:**
 ```
-Mean: 1.60 children
-Median: 2.0 children
+Mean: 1.55 children
+Median: 2 children
 Mode: 1 children
 ```
+
+![Plot](images/output_1913e203682e.png)
+
+
 (Bar chart displayed: 0 children=3, 1 child=8, 2 children=6, 3 children=2, 4 children=1)
 
 ## Data Type Summary
@@ -327,19 +343,20 @@ Original data:
 Missing values:
 Height    1
 Weight    1
-Score     2
+Score     1
 dtype: int64
 
 After dropping: 2 rows
 
 After filling with mean:
    Height  Weight  Score
-0   165.0    55.0   85.0
-1   170.0    62.0   90.0
-2   168.0    63.0   88.0
-3   168.8    70.0   92.0
-4   172.0    65.0   88.8
+0  165.00    55.0  85.00
+1  170.00    62.0  90.00
+2  168.00    63.0  88.00
+3  168.75    70.0  92.00
+4  172.00    65.0  88.75
 ```
+
 
 ## Loading and Exploring Datasets
 
@@ -356,6 +373,10 @@ print(df.head())  # First 5 rows
 print(df.info())  # Data types and missing values
 print(df.describe())  # Summary statistics
 ```
+
+**Output:**
+`Error: FileNotFoundError: [Errno 2] No such file or directory: 'data.csv'`
+
 
 ### Creating DataFrames
 
@@ -378,7 +399,7 @@ print(f"Each item has {len(df.columns)} features (d = {len(df.columns)})")
 
 **Output:**
 ```
-      Name  Age  Score
+Name  Age  Score
 0    Alice   20     85
 1      Bob   21     90
 2  Charlie   20     88
@@ -387,6 +408,7 @@ print(f"Each item has {len(df.columns)} features (d = {len(df.columns)})")
 Dataset has 4 items (N = 4)
 Each item has 3 features (d = 3)
 ```
+
 
 ## Common Data Sources
 
@@ -436,6 +458,33 @@ print(df.isna().sum())
 print(df.describe())
 ```
 
+**Output:**
+```
+Name  Age  Score
+0    Alice   20     85
+1      Bob   21     90
+2  Charlie   20     88
+3    David   22     92
+Name     object
+Age       int64
+Score     int64
+dtype: object
+Name     0
+Age      0
+Score    0
+dtype: int64
+             Age      Score
+count   4.000000   4.000000
+mean   20.750000  88.750000
+std     0.957427   2.986079
+min    20.000000  85.000000
+25%    20.000000  87.250000
+50%    20.500000  89.000000
+75%    21.250000  90.500000
+max    22.000000  92.000000
+```
+
+
 ### 2. Visualize Early
 
 - Plot histograms for continuous variables
@@ -473,9 +522,8 @@ print(f"Cleaned: {len(df)} → {len(df_clean)} rows")
 ```
 
 **Output:**
-```
-Cleaned: 4 → 4 rows
-```
+`Error: TypeError: Could not convert ['AliceBobCharlieDavid'] to numeric`
+
 
 ## Summary
 

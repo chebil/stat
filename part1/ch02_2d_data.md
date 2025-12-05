@@ -60,6 +60,7 @@ Girl      23     130       88
 Total: 478
 ```
 
+
 ### Stacked Bar Charts
 
 **Stacked bar charts** show how one categorical variable is distributed across another.
@@ -79,14 +80,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Stacked bar chart displayed with 3 bars:
- - Sports bar: Blue (117 boys) + Pink (23 girls) = 140 total
- - Grades bar: Blue (60 boys) + Pink (130 girls) = 190 total (tallest)
- - Popular bar: Blue (60 boys) + Pink (88 girls) = 148 total
- 
- Visual pattern: Girls dominate Grades, Boys dominate Sports)
-```
+![Plot](images/output_b5f419612eb4.png)
+
 
 ### Grouped Bar Charts
 
@@ -107,14 +102,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Grouped bar chart displayed:
- - Sports: Boy bar (117) much taller than Girl bar (23)
- - Grades: Girl bar (130) much taller than Boy bar (60)
- - Popular: Girl bar (88) taller than Boy bar (60)
- 
- Easier to compare genders directly for each goal)
-```
+![Plot](images/output_e5e9b2007506.png)
+
 
 ### Heatmaps
 
@@ -133,17 +122,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Heatmap displayed:
-           Sports  Grades  Popular
- Boy:      117🔥    60      60
- Girl:      23     130🔥    88
- 
- Color intensity:
- - Darkest red: 130 (Girl-Grades) and 117 (Boy-Sports)
- - Light yellow: 23 (Girl-Sports)
- - Visual pattern immediately clear)
-```
+![Plot](images/output_bdc9ebbf1e52.png)
+
 
 **Advantages of heatmaps**:
 - Easy to spot high/low values
@@ -172,14 +152,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Mosaic plot displayed:
- - Area of each rectangle proportional to count
- - Boy-Sports: Large rectangle (117)
- - Girl-Grades: Large rectangle (130)
- - Girl-Sports: Small rectangle (23)
- - Both width and height encode proportions)
-```
+`Error: ModuleNotFoundError: No module named 'statsmodels'`
+
 
 ## 2.1.2 Series
 
@@ -235,17 +209,14 @@ plt.show()
 
 **Output:**
 ```
-Temperature range: 5.8°C to 29.4°C
-Mean temperature: 15.1°C
-Summer peak (day 180): 24.2°C
-Winter low (day 0): 13.5°C
-
-(Line plot displayed:
- - Blue jagged line: Daily temperatures with noise
- - Red smooth line: 30-day moving average showing clear sine wave pattern
- - Seasonal cycle visible: peak in summer (July), low in winter (Jan)
- - Temperature range approximately 5°C to 30°C)
+Temperature range: -1.3°C to 29.2°C
+Mean temperature: 15.0°C
+Summer peak (day 180): 16.7°C
+Winter low (day 0): 16.0°C
 ```
+
+![Plot](images/output_b52c034d7ac7.png)
+
 
 ### Multiple Series
 
@@ -280,16 +251,13 @@ plt.show()
 
 **Output:**
 ```
-Series A: Mean = 49.8, Std = 5.7
-Series B: Mean = 53.2, Std = 6.1
-Series C: Mean = 45.6, Std = 5.4
-
-(Three line plots displayed:
- - Series A (blue): Random walk starting at 50, wandering between 40-60
- - Series B (orange): Random walk starting at 55, highest overall
- - Series C (green): Random walk starting at 45, lowest overall
- - All three show random walk behavior with drift)
+Series A: Mean = 43.6, Std = 4.6
+Series B: Mean = 56.0, Std = 2.6
+Series C: Mean = 51.1, Std = 2.5
 ```
+
+![Plot](images/output_b55eae386109.png)
+
 
 ### Seasonal Decomposition
 
@@ -336,20 +304,8 @@ plt.show()
 ```
 
 **Output:**
-```
-Original: Mean = 59.17, Std = 7.90
-Trend: Increases from 50.23 to 68.45
-Seasonality: Range = 20.00
-Residual: Std = 2.01
+`Error: ModuleNotFoundError: No module named 'statsmodels'`
 
-(Four plots displayed vertically:
- 1. Original: Complex pattern combining all components
- 2. Trend: Smooth linear increase from ~50 to ~68
- 3. Seasonality: Perfect sine wave repeating every 30 days
- 4. Residual: Random noise centered at 0 with std ~2
- 
- Decomposition successfully separated signal components!)
-```
 
 ## 2.1.3 Scatter Plots for Spatial Data
 
@@ -391,17 +347,13 @@ plt.show()
 **Output:**
 ```
 Total earthquakes: 200
-Magnitude range: 1.02 to 11.26
-Mean magnitude: 3.05
-Earthquakes > 5.0: 31
-
-(Scatter plot displayed:
- - 200 points spread across map area
- - Point sizes vary dramatically: tiny (mag 1) to huge (mag 11)
- - Colors: yellow (low magnitude) to dark red (high magnitude)
- - Spatial pattern: roughly uniform distribution
- - Few large earthquakes stand out visually)
+Magnitude range: 1.02 to 17.34
+Mean magnitude: 3.30
+Earthquakes > 5.0: 39
 ```
+
+![Plot](images/output_093bc9783af8.png)
+
 
 ### Point Density Maps
 
@@ -437,15 +389,12 @@ plt.show()
 
 **Output:**
 ```
-Density range: 0.000247 to 0.002891
+Density range: 0.004045 to 0.011608
 High-density regions (top 10%): 20 points
-
-(Density scatter plot displayed:
- - Colors from dark purple (low density) to bright yellow (high density)
- - Brighter clusters visible where earthquakes concentrate
- - Easier to identify hot spots than raw scatter plot
- - Viridis colormap enhances perception of density gradients)
 ```
+
+![Plot](images/output_c32221c08d09.png)
+
 
 ## 2.1.4 Exposing Relationships with Scatter Plots
 
@@ -478,16 +427,13 @@ plt.show()
 
 **Output:**
 ```
-Correlation: r = 0.948
-X (height): Mean = 169.7 cm, Std = 9.9 cm
-Y (weight): Mean = 84.9 kg, Std = 7.1 kg
-
-(Scatter plot displayed:
- - 100 points showing clear positive linear trend
- - Points cluster tightly around invisible regression line
- - As height increases, weight increases
- - Strong positive correlation visible)
+Correlation: r = 0.636
+X (height): Mean = 169.0 cm, Std = 9.0 cm
+Y (weight): Mean = 84.6 kg, Std = 6.1 kg
 ```
+
+![Plot](images/output_9652dfd2849b.png)
+
 
 ### Adding Trend Lines
 
@@ -517,16 +463,13 @@ plt.show()
 
 **Output:**
 ```
-Regression equation: y = 0.50x + 0.02
-R-squared: 0.899
-P-value: 2.09e-44
-
-(Scatter plot with red regression line displayed:
- - Line fits through center of point cloud
- - Strong fit: R² = 0.899 (89.9% variance explained)
- - P-value << 0.05: Highly significant relationship
- - For every 1 cm increase in height, weight increases by 0.50 kg)
+Regression equation: y = 0.43x + 12.21
+R-squared: 0.404
+P-value: 1.20e-12
 ```
+
+![Plot](images/output_11575117331d.png)
+
 
 ### Color-Coded Scatter Plots
 
@@ -560,16 +503,12 @@ plt.show()
 
 **Output:**
 ```
-Males: 51
-Females: 49
-
-(Color-coded scatter plot displayed:
- - Blue points (males): 51 points
- - Pink points (females): 49 points
- - Both genders follow same linear trend
- - Colors allow visual comparison of gender distribution
- - No obvious gender-specific clustering)
+Males: 44
+Females: 56
 ```
+
+![Plot](images/output_fec8e4aaacc7.png)
+
 
 ### Scatter Plot Patterns
 
@@ -626,18 +565,13 @@ plt.show()
 ```
 Pattern correlations:
   Strong Positive: r = 0.97
-  Weak Positive: r = 0.29
-  Strong Negative: r = -0.95
-  No Correlation: r = 0.03
-
-(Four scatter plots displayed:
- 1. Top-left: Tight upward trend (r=0.97)
- 2. Top-right: Diffuse cloud with slight upward trend (r=0.29)
- 3. Bottom-left: Tight downward trend (r=-0.95)
- 4. Bottom-right: Random cloud, no pattern (r=0.03)
- 
- Visual learning: Shape of scatter plot reveals correlation strength)
+  Weak Positive: r = 0.35
+  Strong Negative: r = -0.96
+  No Correlation: r = -0.11
 ```
+
+![Plot](images/output_9fdbb81066dc.png)
+
 
 ### Bubble Charts
 
@@ -674,19 +608,14 @@ plt.show()
 **Output:**
 ```
 Data summary:
-  Heights: 148 - 192 cm
-  Weights: 69 - 101 kg
-  Ages: 18 - 64 years
-  Correlation (height-weight): r = 0.933
-
-(Bubble chart displayed:
- - 50 bubbles of varying sizes
- - Smallest bubbles: 18-year-olds (size ~180 pixels)
- - Largest bubbles: 64-year-olds (size ~640 pixels)
- - Color gradient: purple (young) to yellow (old)
- - Strong upward trend visible (height-weight correlation)
- - Three variables visible simultaneously: position + size + color)
+  Heights: 150 - 189 cm
+  Weights: 69 - 96 kg
+  Ages: 18 - 61 years
+  Correlation (height-weight): r = 0.764
 ```
+
+![Plot](images/output_421b36834541.png)
+
 
 ## Summary
 

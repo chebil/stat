@@ -38,6 +38,15 @@ plt.grid(True, alpha=0.3, axis='y')
 plt.show()
 ```
 
+**Output:**
+```
+E[X] = 3.5
+Calculation: 1×1/6 + 2×1/6 + 3×1/6 + 4×1/6 + 5×1/6 + 6×1/6 = 3.5
+```
+
+![Plot](images/output_0d058ae03510.png)
+
+
 ### Example: Expected Sum of Two Dice
 
 ```python
@@ -61,6 +70,14 @@ simulated_mean = np.mean(die1 + die2)
 
 print(f"Simulated mean (100,000 rolls): {simulated_mean:.4f}")
 ```
+
+**Output:**
+```
+E[Sum of two dice] = 7.0
+E[Die 1] + E[Die 2] = 3.5 + 3.5 = 7.0
+Simulated mean (100,000 rolls): 7.0023
+```
+
 
 ### Definition: Expected Value (Continuous)
 
@@ -89,6 +106,14 @@ simulated_uniform = np.random.uniform(a, b, size=100000)
 print(f"Simulated mean: {np.mean(simulated_uniform):.4f}")
 ```
 
+**Output:**
+```
+Uniform[2, 8]:
+E[X] = 5.0
+Simulated mean: 5.0025
+```
+
+
 ## Expected Value of a Function
 
 If $Y = g(X)$ for some function $g$:
@@ -113,6 +138,17 @@ print(f"E[X^2] = {expected_x_squared}")
 print(f"(E[X])^2 = {expected_x**2}")
 print(f"\nNote: E[X^2] ≠ (E[X])^2")
 ```
+
+**Output:**
+```
+For a die roll:
+E[X] = 3.5
+E[X^2] = 15.166666666666666
+(E[X])^2 = 12.25
+
+Note: E[X^2] ≠ (E[X])^2
+```
+
 
 ## Properties of Expected Value
 
@@ -144,6 +180,19 @@ print(f"\nE[3X + 2Y + 5] = {np.mean(3*X + 2*Y + 5):.4f}")
 print(f"3E[X] + 2E[Y] + 5 = {3*np.mean(X) + 2*np.mean(Y) + 5:.4f}")
 ```
 
+**Output:**
+```
+Linearity of Expectation:
+E[X] = 3.5031
+E[Y] = 3.4992
+E[X + Y] = 7.0023
+E[X] + E[Y] = 7.0023
+
+E[3X + 2Y + 5] = 22.5077
+3E[X] + 2E[Y] + 5 = 22.5077
+```
+
+
 ### Product of Independent Random Variables
 
 If $X$ and $Y$ are **independent**:
@@ -172,6 +221,24 @@ print(f"E[XY] = {np.mean(X*Y_dependent):.4f}")
 print(f"E[X] × E[Y] = {np.mean(X) * np.mean(Y_dependent):.4f}")
 print(f"\nNote: E[XY] ≠ E[X]E[Y] for dependent variables!")
 ```
+
+**Output:**
+```
+Product of Independent Variables:
+E[X] = 3.5031
+E[Y] = 3.4992
+E[XY] = 12.2517
+E[X] × E[Y] = 12.2579
+
+Product of Dependent Variables (Y = 7 - X):
+E[X] = 3.5031
+E[Y] = 3.4969
+E[XY] = 9.3343
+E[X] × E[Y] = 12.2500
+
+Note: E[XY] ≠ E[X]E[Y] for dependent variables!
+```
+
 
 ## 4.2.2 Mean, Variance and Covariance
 
@@ -214,6 +281,20 @@ print(f"Simulated variance: {np.var(simulated):.4f}")
 print(f"Simulated std: {np.std(simulated):.4f}")
 ```
 
+**Output:**
+```
+Die Roll Statistics:
+Mean: 3.5000
+Variance (method 1): 2.9167
+Variance (method 2): 2.9167
+Standard deviation: 1.7078
+
+Simulated mean: 3.5031
+Simulated variance: 2.9157
+Simulated std: 1.7075
+```
+
+
 ### Properties of Variance
 
 1. **Adding constants doesn't change variance**:
@@ -236,6 +317,16 @@ print(f"Var(X + 10) = {np.var(X + 10):.4f}  (same as Var(X))")
 print(f"Var(2X) = {np.var(2*X):.4f}")
 print(f"4 × Var(X) = {4 * np.var(X):.4f}  (Var(2X) = 2^2 × Var(X))")
 ```
+
+**Output:**
+```
+Variance Properties:
+Var(X) = 2.9157
+Var(X + 10) = 2.9157  (same as Var(X))
+Var(2X) = 11.6627
+4 × Var(X) = 11.6627  (Var(2X) = 2^2 × Var(X))
+```
+
 
 ### Covariance
 
@@ -283,6 +374,17 @@ plt.tight_layout()
 plt.show()
 ```
 
+**Output:**
+```
+Covariance:
+Cov(X, Y_independent) = -0.0086
+Cov(X, Y_correlated) = 1.0202
+Correlation(X, Y_correlated) = 0.8989
+```
+
+![Plot](images/output_f31eed981fe1.png)
+
+
 ## 4.2.3 Expectations and Statistics
 
 There's a deep connection between **expectations** (properties of random variables) and **statistics** (properties of data):
@@ -319,6 +421,19 @@ print(f"\nTheoretical Var(X) = {theoretical_var:.4f}")
 print(f"Sample variance = {np.var(samples):.4f}")
 print(f"\nAs sample size increases, sample statistics → population parameters")
 ```
+
+**Output:**
+```
+Expectation vs. Statistics:
+Theoretical E[X] = 0.5000
+Sample mean = 0.4863
+
+Theoretical Var(X) = 0.2500
+Sample variance = 0.2362
+
+As sample size increases, sample statistics → population parameters
+```
+
 
 ## Summary
 

@@ -75,16 +75,12 @@ plt.show()
 
 **Output:**
 ```
-Mean: 2.01
-Median: 1.39
-
-(Histogram displayed:
- - Right-skewed distribution with long tail to the right
- - Most data concentrated between 0-2
- - Few values extend to 8-10
- - Red line (mean=2.01) to the right of green line (median=1.39)
- - Clear visual confirmation: Mean > Median indicates right skew)
+Mean: 1.95
+Median: 1.37
 ```
+
+![Plot](images/output_829c805340f1.png)
+
 
 ## 1.4.2 Standard Coordinates and Normal Data
 
@@ -131,15 +127,12 @@ print(f"Z-scores: {z_scores}")
 
 **Output:**
 ```
-Original data - Mean: 172.00, Std: 4.32
-Z-scores - Mean: 0.0000000000, Std: 1.0000000000
-Z-scores: [-1.62  -0.46  -0.93  0.    1.85  0.69  -0.69  0.23  1.16  -0.23]
-
-Verification: The z-scores have:
-  - Mean = 0 (exactly, within floating-point precision)
-  - Std = 1 (exactly)
-  - Same shape as original, but normalized
+Original data - Mean: 172.00, Std: 4.22
+Z-scores - Mean: -0.0000000000, Std: 1.0000000000
+Z-scores: [-1.65915912 -0.47404546 -0.94809093  0.          1.89618185  0.71106819
+ -0.71106819  0.23702273  1.18511366 -0.23702273]
 ```
+
 
 ### Normal Data
 
@@ -220,23 +213,13 @@ plt.show()
 
 **Output:**
 ```
-Within 1 SD: 68.2% (expected: 68%)
+Within 1 SD: 68.4% (expected: 68%)
 Within 2 SD: 95.4% (expected: 95%)
 Within 3 SD: 99.7% (expected: 99.7%)
-
-(Two plots displayed side by side:
-
- Plot 1 - Original Data:
-  - Bell-shaped histogram centered at 100
-  - Spread from approximately 50 to 150
-  - Symmetric distribution
-  
- Plot 2 - Standardized Data:
-  - Bell-shaped histogram centered at 0
-  - Spread from approximately -4 to 4
-  - Red curve (theoretical normal) overlays perfectly on histogram
-  - Clear visual confirmation of normality)
 ```
+
+![Plot](images/output_d07024e00149.png)
+
 
 ## 1.4.3 Box Plots
 
@@ -311,48 +294,26 @@ for i, (data, label) in enumerate(zip(data_to_plot, ['Group A', 'Group B', 'Grou
 **Output:**
 ```
 Group A:
-  Median: 100.12
-  Q1: 89.94
-  Q3: 110.18
-  IQR: 20.24
+  Median: 98.10
+  Q1: 90.99
+  Q3: 106.09
+  IQR: 15.10
 
 Group B:
-  Median: 109.87
-  Q1: 96.32
-  Q3: 123.45
-  IQR: 27.13
+  Median: 111.68
+  Q1: 93.89
+  Q3: 120.76
+  IQR: 26.88
 
 Group C:
-  Median: 94.56
-  Q1: 88.21
-  Q3: 101.34
-  IQR: 13.13
-
-(Box plot displayed with three vertical boxes:
-
- Group A (blue):
-  - Box from ~90 to ~110
-  - Median line at ~100
-  - Whiskers extending from ~60 to ~135
-  - Few outliers
-  
- Group B (green):
-  - Box from ~96 to ~123 (tallest/widest box)
-  - Median line at ~110 (highest)
-  - Whiskers extending from ~65 to ~155
-  - Several outliers visible
-  
- Group C (coral):
-  - Box from ~88 to ~101 (narrowest box)
-  - Median line at ~95 (lowest)
-  - Whiskers extending from ~70 to ~115
-  - Minimal outliers
-  
- Visual comparison shows:
-  - Group B has highest central tendency
-  - Group B has largest spread (tallest box)
-  - Group C has lowest central tendency and smallest spread)
+  Median: 95.98
+  Q1: 88.45
+  Q3: 102.04
+  IQR: 13.60
 ```
+
+![Plot](images/output_55b135ca86e1.png)
+
 
 ### Interpreting Box Plots
 

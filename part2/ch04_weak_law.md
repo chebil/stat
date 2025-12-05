@@ -58,6 +58,17 @@ plt.tight_layout()
 plt.show()
 ```
 
+**Output:**
+```
+n=1: Mean of sample means = 3.4999, Std = 1.7086
+n=5: Mean of sample means = 3.5086, Std = 0.7675
+n=20: Mean of sample means = 3.4987, Std = 0.3814
+n=100: Mean of sample means = 3.4994, Std = 0.1714
+```
+
+![Plot](images/output_7faa2cc94263.png)
+
+
 **Observation**: As $N$ increases, the distribution of $\bar{X}_N$ becomes:
 1. More concentrated around $E[X]$
 2. Narrower (smaller variance)
@@ -111,6 +122,21 @@ plt.grid(True, alpha=0.3)
 plt.show()
 ```
 
+**Output:**
+```
+Markov's Inequality: P(X ≥ a) ≤ E[X]/a
+For X ~ Exponential(λ=0.5), E[X] = 2.0
+
+a =  2: P(X ≥ 2) = 0.3679 ≤ 1.0000 ✓
+a =  4: P(X ≥ 4) = 0.1353 ≤ 0.5000 ✓
+a =  6: P(X ≥ 6) = 0.0498 ≤ 0.3333 ✓
+a =  8: P(X ≥ 8) = 0.0183 ≤ 0.2500 ✓
+a = 10: P(X ≥ 10) = 0.0067 ≤ 0.2000 ✓
+```
+
+![Plot](images/output_9cebe6b1d6e7.png)
+
+
 ### Chebyshev's Inequality
 
 For any random variable $X$ with mean $\mu$ and variance $\sigma^2$, and any $k > 0$:
@@ -160,6 +186,21 @@ plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
 ```
+
+**Output:**
+```
+Chebyshev's Inequality: P(|X - μ| ≥ kσ) ≤ 1/k²
+For X ~ Normal(μ=100, σ=15)
+
+k = 1: P(|X - 100| ≥ 1×15) = 0.3173 ≤ 1.0000 ✓
+k = 2: P(|X - 100| ≥ 2×15) = 0.0455 ≤ 0.2500 ✓
+k = 3: P(|X - 100| ≥ 3×15) = 0.0027 ≤ 0.1111 ✓
+k = 4: P(|X - 100| ≥ 4×15) = 0.0001 ≤ 0.0625 ✓
+k = 5: P(|X - 100| ≥ 5×15) = 0.0000 ≤ 0.0400 ✓
+```
+
+![Plot](images/output_466690de6910.png)
+
 
 ## 4.3.3 Proving the Inequalities
 
@@ -265,6 +306,17 @@ print(f"True mean: {true_mean}")
 print(f"Error: {abs(running_mean[-1] - true_mean):.6f}")
 ```
 
+**Output:**
+```
+After 10000 rolls:
+Sample mean: 3.499900
+True mean: 3.5
+Error: 0.000100
+```
+
+![Plot](images/output_a0438f6c5991.png)
+
+
 ### Convergence Rate
 
 Chebyshev's inequality tells us:
@@ -300,6 +352,17 @@ print(f"\nEmpirical verification ({num_trials} trials):")
 print(f"Success rate: {empirical_prob:.4f}")
 print(f"Guaranteed rate: {1-delta:.4f}")
 ```
+
+**Output:**
+```
+To guarantee |X̄_N - μ| < 0.1 with probability ≥ 0.95:
+Need N ≥ 5833 samples
+
+Empirical verification (10000 trials):
+Success rate: 1.0000
+Guaranteed rate: 0.9500
+```
+
 
 ## Summary
 

@@ -32,6 +32,13 @@ print(f"Sample space size: {len(dice_outcomes)}")
 print(f"First few outcomes: {dice_outcomes[:5]}")
 ```
 
+**Output:**
+```
+Sample space size: 36
+First few outcomes: [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5)]
+```
+
+
 ## Probability of Outcomes
 
 For **equally likely outcomes**:
@@ -62,6 +69,15 @@ for n in [10, 100, 1000, 10000]:
     print(f"n={n:5d}: P(H) = {prob_heads:.4f}")
 ```
 
+**Output:**
+```
+n=   10: P(H) = 0.7000
+n=  100: P(H) = 0.5700
+n= 1000: P(H) = 0.5190
+n=10000: P(H) = 0.4990
+```
+
+
 ## Probability Properties
 
 1. **Non-negative**: $P(A) \geq 0$
@@ -84,6 +100,13 @@ prob = len(favorable) / len(sample_space)
 print(f"P(sum=7) = {len(favorable)}/{len(sample_space)} = {prob:.4f}")
 print(f"Favorable outcomes: {favorable}")
 ```
+
+**Output:**
+```
+P(sum=7) = 6/36 = 0.1667
+Favorable outcomes: [(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)]
+```
+
 
 ## Key Takeaways
 

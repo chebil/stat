@@ -122,14 +122,15 @@ print(f"\nThis indicates a {('strong positive' if r_scipy > 0.7 else 'moderate')
 
 **Output:**
 ```
-Correlation (numpy):  0.9982
-Correlation (scipy):  0.9982
-Correlation (manual): 0.9982
+Correlation (numpy):  0.9998
+Correlation (scipy):  0.9998
+Correlation (manual): 0.9998
 
-P-value: 0.000027
+P-value: 0.000000
 
 This indicates a strong positive correlation.
 ```
+
 
 **Note**: The plot would display here (scatter plot with strong upward trend)
 
@@ -164,11 +165,12 @@ print(f"More study hours → fewer errors")
 
 **Output:**
 ```
-Correlation: -0.958
+Correlation: -0.974
 
 Interpretation: Strong negative correlation
 More study hours → fewer errors
 ```
+
 
 ## 2.2.3 Correlation and Prediction
 
@@ -222,11 +224,12 @@ for h in [160, 170, 180, 190]:
 Predicted weight for 172 cm: 70.85 kg
 
 Predictions for different heights:
-  Height 160 cm → Weight 55.0 kg
-  Height 170 cm → Weight 68.0 kg
-  Height 180 cm → Weight 81.0 kg
-  Height 190 cm → Weight 94.1 kg
+  Height 160 cm → Weight 55.1 kg
+  Height 170 cm → Weight 68.2 kg
+  Height 180 cm → Weight 81.3 kg
+  Height 190 cm → Weight 94.4 kg
 ```
+
 
 ### Regression to the Mean
 
@@ -271,7 +274,7 @@ print(f"  - Warm weather → more swimming → more drownings")
 **Output:**
 ```
 Ice Cream Sales vs Drownings:
-Correlation: 0.998
+Correlation: 0.999
 
 ⚠️ WARNING: High correlation!
 But ice cream doesn't cause drowning.
@@ -279,6 +282,7 @@ Confounding variable: SUMMER (warm weather)
   - Warm weather → more ice cream sales
   - Warm weather → more swimming → more drownings
 ```
+
 
 ### 2. Non-linear Relationships
 
@@ -306,6 +310,7 @@ Correlation: 0.000
 Lesson: Always plot your data - don't rely on correlation alone.
 ```
 
+
 **Lesson:** Always visualize your data with scatter plots!
 
 ### 3. Outliers Can Distort Correlation
@@ -332,12 +337,13 @@ print(f"\nLesson: Check for outliers before computing correlation!")
 **Output:**
 ```
 Correlation without outlier: 1.000
-Correlation with outlier:    0.760
+Correlation with outlier:    0.230
 
-Change: 0.240
+Change: 0.770
 
 Lesson: Check for outliers before computing correlation!
 ```
+
 
 ### 4. Restricted Range
 
@@ -384,15 +390,16 @@ print(f"Weakest correlation: Age-Shoe_Size ({corr_matrix.loc['Age', 'Shoe_Size']
 **Output:**
 ```
 Correlation Matrix:
-            Height  Weight    Age  Shoe_Size
-Height       1.000   0.981 -0.090      0.832
-Weight       0.981   1.000 -0.085      0.812
-Age         -0.090  -0.085  1.000     -0.015
-Shoe_Size    0.832   0.812 -0.015      1.000
+           Height  Weight    Age  Shoe_Size
+Height      1.000   0.636 -0.030      0.637
+Weight      0.636   1.000  0.062      0.464
+Age        -0.030   0.062  1.000     -0.078
+Shoe_Size   0.637   0.464 -0.078      1.000
 
-Strongest correlation: Height-Weight (0.981)
-Weakest correlation: Age-Shoe_Size (-0.015)
+Strongest correlation: Height-Weight (0.636)
+Weakest correlation: Age-Shoe_Size (-0.078)
 ```
+
 
 **Interpretation:**
 - Diagonal is always 1.0 (perfect correlation with itself)
@@ -428,11 +435,12 @@ print(f"\nSpearman uses ranks, so it's not affected by extreme values.")
 Data with outlier: x = [  1   2   3   4   5 100]
                    y = [ 2  4  6  8 10 12]
 
-Pearson correlation:  0.581 (affected by outlier)
+Pearson correlation:  0.681 (affected by outlier)
 Spearman correlation: 1.000 (robust to outlier)
 
 Spearman uses ranks, so it's not affected by extreme values.
 ```
+
 
 ### Kendall's Tau
 

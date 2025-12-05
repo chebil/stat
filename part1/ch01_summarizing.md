@@ -43,9 +43,8 @@ print(f"Mean net worth: ${mean:,.2f}")
 ```
 
 **Output:**
-```
-Mean net worth: $107,903.00
-```
+`Mean net worth: $107,903.00`
+
 
 ## 1.3.2 Standard Deviation and Variance
 
@@ -109,11 +108,12 @@ print(f"\nVerification: std² = {std**2:,.2f} (should equal variance)")
 
 **Output:**
 ```
-Standard Deviation: $9,265.04
-Variance: $85,841,154.10
+Standard Deviation: $8,789.95
+Variance: $77,263,201.00
 
-Verification: std² = 85,841,154.10 (should equal variance)
+Verification: std² = 77,263,201.00 (should equal variance)
 ```
+
 
 ### Note on Unbiased Standard Deviation
 
@@ -179,12 +179,13 @@ print(f"NumPy Std: ${std:,.2f}")
 **Output:**
 ```
 Online Mean: $107,903.00
-Online Std: $9,265.04
+Online Std: $7,951.62
 
 Comparison with NumPy:
 NumPy Mean: $107,903.00
-NumPy Std: $9,265.04
+NumPy Std: $8,789.95
 ```
+
 
 ## 1.3.4 The Median
 
@@ -250,9 +251,10 @@ Mean: $91,007,184.55
 Median: $108,930.00
 
 Changes:
-Mean changed by: $90,899,281.55 (84233.7%)
+Mean changed by: $90,899,281.55 (84241.7%)
 Median changed by: $1,095.00 (1.0%)
 ```
+
 
 ## 1.3.5 Percentiles and Quartiles
 
@@ -321,19 +323,20 @@ print(f"\nOutliers: {outliers}")
 **Output:**
 ```
 Quartiles:
-Q1 (25th): $100,160.00
+Q1 (25th): $100,595.00
 Q2 (50th/Median): $107,835.00
-Q3 (75th): $112,515.00
+Q3 (75th): $111,975.00
 
-Interquartile Range: $12,355.00
-Standard Deviation: $9,265.04
+Interquartile Range: $11,380.00
+Standard Deviation: $8,789.95
 
 Outlier Detection Bounds:
-Lower: $81,627.50
-Upper: $131,047.50
+Lower: $83,525.00
+Upper: $129,045.00
 
 Outliers: []
 ```
+
 
 ### Outlier Detection
 
@@ -424,21 +427,22 @@ print(f"Std of z-scores:  {np.std(z_scores):.10f}")
 ```
 Original Value → Z-score:
 ------------------------------
-$ 100,360 → z =  -0.81
-$ 109,770 → z =   0.20
-$  96,860 → z =  -1.19
-$  97,860 → z =  -1.08
-$ 108,930 → z =   0.11
-$ 124,330 → z =   1.77
-$ 101,300 → z =  -0.71
-$ 112,710 → z =   0.52
-$ 106,740 → z =  -0.13
-$ 120,170 → z =   1.32
+$  100,360 → z =  -0.86
+$  109,770 → z =   0.21
+$   96,860 → z =  -1.26
+$   97,860 → z =  -1.14
+$  108,930 → z =   0.12
+$  124,330 → z =   1.87
+$  101,300 → z =  -0.75
+$  112,710 → z =   0.55
+$  106,740 → z =  -0.13
+$  120,170 → z =   1.40
 
 Verification:
-Mean of z-scores: 0.0000000000
+Mean of z-scores: -0.0000000000
 Std of z-scores:  1.0000000000
 ```
+
 
 ## Summary
 

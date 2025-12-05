@@ -60,12 +60,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Bar chart displayed with two bars:
- - Boy: 240 (blue bar)
- - Girl: 238 (pink bar)
- Both bars approximately equal height, showing balanced gender distribution)
-```
+![Plot](images/output_016f5342dea2.png)
+
 
 **Interpretation**: The bars are approximately equal height, indicating roughly equal numbers of boys and girls in the study.
 
@@ -96,13 +92,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Bar chart displayed with three bars:
- - Sports: 140 (gold bar)
- - Grades: 220 (green bar) - tallest
- - Popular: 118 (coral bar) - shortest
- Clear visual hierarchy showing Grades > Sports > Popular)
-```
+![Plot](images/output_58cde0ad5ee1.png)
+
 
 **Interpretation**: At a glance, we see that "Grades" is the most popular goal, followed by "Sports", then "Popular".
 
@@ -123,12 +114,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Horizontal bar chart displayed:
- - Grades: 220 (longest bar, pointing right)
- - Sports: 140 (medium bar)
- - Popular: 118 (shortest bar))
-```
+![Plot](images/output_4ffc2b91e403.png)
+
 
 **Use horizontal bars when**:
 - Category names are long
@@ -189,15 +176,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Histogram displayed with 5 bins:
- Bin 0.97-1.02: 3 people
- Bin 1.02-1.08: 2 people
- Bin 1.08-1.13: 3 people
- Bin 1.13-1.19: 1 person
- Bin 1.19-1.25: 1 person
- Distribution roughly bell-shaped, centered around $1.08M)
-```
+![Plot](images/output_9970329efdc4.png)
+
 
 **Interpretation**: Net worths cluster around $107,500-$112,500. One person is noticeably wealthier (~$124,000).
 
@@ -222,16 +202,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Histogram displayed with 6 bins from 0 to 70:
- Bin 0-12:   3 cheeses (low scores)
- Bin 12-23:  6 cheeses (tallest bar)
- Bin 23-35:  3 cheeses
- Bin 35-47:  5 cheeses
- Bin 47-58:  3 cheeses (high scores)
- Bin 58-70:  0 cheeses
- Right-skewed distribution with long tail on right)
-```
+![Plot](images/output_defd407f2494.png)
+
 
 **Interpretation**: 
 - Most cheeses score between 10-30 (9 cheeses)
@@ -292,12 +264,13 @@ plt.show()
 
 **Output:**
 ```
-Bin Centers: [ 5.43 16.73 28.03 39.33 50.63 61.93]
-Counts: [3 6 3 5 3 0]
-Bin Width: 11.30
-
-(Histogram displayed matching the manual calculations)
+Bin Centers: [ 5.40833333 14.825      24.24166667 33.65833333 43.075      52.49166667]
+Counts: [3 4 5 2 3 3]
+Bin Width: 9.42
 ```
+
+![Plot](images/output_b89c5664ab3c.png)
+
 
 ### Choosing the Number of Bins
 
@@ -353,15 +326,13 @@ plt.show()
 **Output:**
 ```
 Custom bin edges: [0, 10, 20, 35, 50, 70]
-Counts: [3 6 3 5 2]
+Counts: [3 4 6 5 2]
 Bin widths: [10 10 15 15 20]
-Densities (height): [0.3  0.6  0.2  0.33 0.1 ]
-
-(Histogram displayed with varying bar widths:
- - First two bars (0-10, 10-20): width 10, heights adjusted for density
- - Next two bars (20-35, 35-50): width 15, heights adjusted
- - Last bar (50-70): width 20, shortest height due to low density)
+Densities (height): [0.3        0.4        0.4        0.33333333 0.1       ]
 ```
+
+![Plot](images/output_ce27fcc22a1e.png)
+
 
 ## 1.2.4 Conditional Histograms
 
@@ -434,16 +405,13 @@ plt.show()
 
 **Output:**
 ```
-Gender 1: Mean = 98.25°F, Std = 0.59°F
-Gender 2: Mean = 98.59°F, Std = 0.61°F
-Overall: Mean = 98.42°F, Std = 0.62°F
-
-(Three histograms displayed:
- 1. Overall: Bimodal distribution centered at 98.4°F
- 2. Gender 1: Unimodal, centered at 98.25°F (shifted left)
- 3. Gender 2: Unimodal, centered at 98.59°F (shifted right)
- Clear visual difference of ~0.34°F between groups)
+Gender 1: Mean = 98.09°F, Std = 0.54°F
+Gender 2: Mean = 98.62°F, Std = 0.58°F
+Overall: Mean = 98.36°F, Std = 0.62°F
 ```
+
+![Plot](images/output_e35c41b27abe.png)
+
 
 **Interpretation**:
 - Overall distribution clusters around 98.4°F
@@ -471,14 +439,8 @@ plt.show()
 ```
 
 **Output:**
-```
-(Overlapping histograms displayed:
- - Gender 1 (coral): Distribution centered at 98.25°F
- - Gender 2 (green): Distribution centered at 98.59°F
- - Clear separation between the two distributions
- - Some overlap in the middle ranges (97.5-99.0°F)
- - Easy to compare at a glance)
-```
+![Plot](images/output_b7318414c402.png)
+
 
 **Advantages**: Direct visual comparison  
 **Disadvantages**: Can be cluttered if groups overlap heavily
