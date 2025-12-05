@@ -37,14 +37,32 @@ html:
   home_page_in_navbar: true
   use_edit_page_button: false
   use_download_button: true
+  announcement: "📝 Note: Images are being added. Download notebook (.ipynb) files to work with the content locally."
+
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - colon_fence
+    - linkify
 
 # Launch buttons for interactive content  
 launch_buttons:
-  notebook_interface: classic
+  notebook_interface: jupyterlab
+  binderhub_url: https://mybinder.org
   colab_url: https://colab.research.google.com
+  thebe: false
 
 # Sphinx configuration
 sphinx:
   config:
     bibtex_reference_style: author_year
     html_baseurl: https://chebil.github.io/stat/
+    nb_output_stderr: remove
+    html_theme_options:
+      repository_url: https://github.com/chebil/stat
+      use_repository_button: true
+      use_download_button: true
+      use_issues_button: true
+      path_to_docs: ""
+      repository_branch: main
