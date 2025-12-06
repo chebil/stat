@@ -81,12 +81,12 @@ parts:
       sections:
         - file: part3/ch07_significance
           title: "7.1 Significance and P-Values"
-        - file: part3/ch07_comparing_means
-          title: "7.2 Comparing Means (t-Tests)"
-        - file: part3/ch07_other_tests
-          title: "7.3 Other Useful Tests (F-tests, Chi-square)"
+        - file: part3/ch07_comparing_populations
+          title: "7.2 Comparing Population Means"
+        - file: part3/ch07_tests
+          title: "7.3 Other Useful Tests"
         - file: part3/ch07_p_hacking
-          title: "7.4 P-Value Hacking and Pitfalls"
+          title: "7.4 P-Value Hacking and Multiple Testing"
     - file: part3/chapter08
       title: "Chapter 8: Experiments"
       sections:
@@ -97,7 +97,7 @@ parts:
         - file: part3/ch08_design_principles
           title: "8.3 Experimental Design Principles"
     - file: part3/chapter09
-      title: "Chapter 9: Inferring Probability Models from Data"
+      title: "Chapter 9: Inferring Probability Models"
       sections:
         - file: part3/ch09_mle
           title: "9.1 Maximum Likelihood Estimation"
@@ -105,3 +105,7 @@ parts:
           title: "9.2 Bayesian Inference"
         - file: part3/ch09_conjugate
           title: "9.3 Conjugate Priors and MAP"
+        - file: part3/ch09_bayesian_normal
+          title: "9.4 Bayesian Normal Inference"
+        - file: part3/ch09_applications
+          title: "9.5 Applications"
