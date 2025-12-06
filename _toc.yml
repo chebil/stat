@@ -26,7 +26,7 @@ parts:
           title: "2.1 Plotting 2D Data"
         - file: part1/ch02_correlation
           title: "2.2 Correlation"
-        - file: part2/ch02_you_should
+        - file: part1/ch02_you_should
           title: "2.3 You Should Know"
 
   - caption: Part II - Probability
@@ -80,10 +80,28 @@ parts:
       title: "Chapter 7: The Significance of Evidence"
       sections:
         - file: part3/ch07_significance
-          title: "7.1 Significance"
+          title: "7.1 Significance and P-Values"
         - file: part3/ch07_comparing_means
-          title: "7.2 Comparing Population Means"
+          title: "7.2 Comparing Means (t-Tests)"
         - file: part3/ch07_other_tests
-          title: "7.3 Other Useful Tests"
-        - file: part3/ch07_pvalue_hacking
-          title: "7.4 P-Value Hacking"
+          title: "7.3 Other Useful Tests (F-tests, Chi-square)"
+        - file: part3/ch07_p_hacking
+          title: "7.4 P-Value Hacking and Pitfalls"
+    - file: part3/chapter08
+      title: "Chapter 8: Experiments"
+      sections:
+        - file: part3/ch08_one_way_anova
+          title: "8.1 Simple Experiments (One-Way ANOVA)"
+        - file: part3/ch08_two_way_anova
+          title: "8.2 Two-Factor Experiments (Two-Way ANOVA)"
+        - file: part3/ch08_design_principles
+          title: "8.3 Experimental Design Principles"
+    - file: part3/chapter09
+      title: "Chapter 9: Inferring Probability Models from Data"
+      sections:
+        - file: part3/ch09_mle
+          title: "9.1 Maximum Likelihood Estimation"
+        - file: part3/ch09_bayesian
+          title: "9.2 Bayesian Inference"
+        - file: part3/ch09_conjugate
+          title: "9.3 Conjugate Priors and MAP"
