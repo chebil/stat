@@ -490,6 +490,12 @@ plt.savefig('multiple_testing_problem.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Error: TypeError: false_discovery_control() got an unexpected keyword argument 'alpha'
+```
+
+
 ## Key Takeaways
 
 - **P-hacking** undermines scientific integrity through selective reporting and analysis

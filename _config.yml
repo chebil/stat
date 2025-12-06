@@ -8,10 +8,15 @@ exclude_patterns:
   - .github/**
   - .git/**
   - _build/**
+  - .venv/**
   - .nojekyll
   - requirements.txt
   - README.md
   - "**.ipynb_checkpoints"
+  - "**/node_modules/**"
+  - "**/.pytest_cache/**"
+  - "**/test*/**"
+  - scripts/**
 
 # Force re-execution of notebooks on each build
 execute:
@@ -52,6 +57,9 @@ launch_buttons:
   binderhub_url: https://mybinder.org
   colab_url: https://colab.research.google.com
   thebe: false
+
+# Additional Sphinx config
+only_build_toc_files: true
 
 # Sphinx configuration
 sphinx:

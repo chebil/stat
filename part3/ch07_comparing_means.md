@@ -23,9 +23,9 @@ Do these groups have different population means?
 
 If we somehow know σ₁² and σ₂², use the **Z-test**:
 
-\[
+$$
 z = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0, 1)
-\]
+$$
 
 under H₀: μ₁ = μ₂.
 
@@ -37,17 +37,17 @@ under H₀: μ₁ = μ₂.
 
 ### Pooled Variance Estimator
 
-\[
+$$
 s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}
-\]
+$$
 
 This combines information from both samples.
 
 ### Test Statistic
 
-\[
+$$
 t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t_{n_1+n_2-2}
-\]
+$$
 
 ### Python Example
 
@@ -155,6 +155,34 @@ plt.savefig('two_sample_ttest.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Two-Sample t-Test (Equal Variances Assumed)
+============================================================
+Control:   n=10, mean=24.90, std=1.91
+Treatment: n=10, mean=30.60, std=1.51
+
+H₀: μ_control = μ_treatment
+H₁: μ_control ≠ μ_treatment
+
+Pooled standard deviation: 1.721
+Standard error of difference: 0.770
+t-statistic: -7.407
+Degrees of freedom: 18
+P-value: 0.000001
+
+Decision: Reject H₀ (p = 0.0000 < 0.05)
+Conclusion: Treatment mean is significantly different from control.
+Treatment appears to increase the outcome by 5.7 units.
+
+Verification (scipy): t = -7.407, p = 0.000001
+
+95% CI for (μ₁ - μ₂): [-7.32, -4.08]
+```
+
+![Plot](images/output_cf7463f399d6.png)
+
+
 **Output**:
 ```
 Two-Sample t-Test (Equal Variances Assumed)
@@ -186,17 +214,17 @@ When σ₁² ≠ σ₂² (different population variances)
 
 ### Test Statistic
 
-\[
+$$
 t = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
-\]
+$$
 
 ### Degrees of Freedom (Welch-Satterthwaite)
 
 A complicated formula:
 
-\[
+$$
 \text{df} = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}
-\]
+$$
 
 ### Python Example
 
@@ -238,6 +266,27 @@ print(f"  Welch's t-test: t = {t_stat:.3f}, p = {p_value:.4f}")
 print(f"\nDifference in p-values: {abs(p_pooled - p_value):.4f}")
 ```
 
+**Output:**
+```
+Welch's t-Test (Unequal Variances)
+============================================================
+Group A: n=30, mean=100.45, std=11.87
+Group B: n=40, mean=107.15, std=22.98
+
+t-statistic: -1.583
+P-value: 0.1185
+
+Decision: Fail to reject H₀
+Conclusion: No significant difference detected.
+
+If we had (incorrectly) assumed equal variances:
+  Pooled t-test: t = -1.456, p = 0.1500
+  Welch's t-test: t = -1.583, p = 0.1185
+
+Difference in p-values: 0.0315
+```
+
+
 ## Case 4: Paired t-Test
 
 ### When to Use
@@ -253,9 +302,9 @@ Compute **differences** d = x₁ - x₂ for each pair, then test whether mean di
 
 ### Test Statistic
 
-\[
+$$
 t = \frac{\bar{d}}{s_d/\sqrt{n}} \sim t_{n-1}
-\]
+$$
 
 where:
 - \(\bar{d}\) = mean of differences
@@ -359,6 +408,45 @@ plt.savefig('paired_ttest.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Paired t-Test: Weight Loss Study
+============================================================
+Subject | Before | After | Difference
+------------------------------------------------------------
+   A    |    85  |   82  |     +3
+   B    |    92  |   88  |     +4
+   C    |    78  |   76  |     +2
+   D    |    88  |   85  |     +3
+   E    |    95  |   91  |     +4
+   F    |    82  |   80  |     +2
+   G    |    90  |   87  |     +3
+   H    |    87  |   84  |     +3
+   I    |    93  |   90  |     +3
+   J    |    86  |   83  |     +3
+
+Mean difference: 3.00 kg
+Std of differences: 0.67 kg
+
+H₀: μ_difference = 0 (no weight change)
+H₁: μ_difference ≠ 0 (weight changed)
+
+t-statistic: 14.230
+Degrees of freedom: 9
+P-value: 0.0000
+
+Decision: Reject H₀ (p = 0.0000 < 0.05)
+Conclusion: Significant weight change detected.
+Average loss: 3.0 kg
+
+Verification (scipy): t = 14.230, p = 0.0000
+
+95% CI for mean difference: [2.52, 3.48] kg
+```
+
+![Plot](images/output_f0ba0c4f404d.png)
+
+
 ## Choosing the Right Test
 
 ### Decision Tree
@@ -390,9 +478,9 @@ P-values tell us **if** there's a difference, but not **how big** it is.
 
 Standardized mean difference:
 
-\[
+$$
 d = \frac{\bar{x}_1 - \bar{x}_2}{s_p}
-\]
+$$
 
 ### Interpretation
 
@@ -440,6 +528,15 @@ else:
 print(f"Effect size: {effect}")
 print(f"\nInterpretation: The treatment effect is {abs(d):.1f} standard deviations.")
 ```
+
+**Output:**
+```
+Cohen's d = -3.312
+Effect size: large
+
+Interpretation: The treatment effect is 3.3 standard deviations.
+```
+
 
 ## Summary
 

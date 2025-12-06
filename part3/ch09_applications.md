@@ -58,6 +58,24 @@ else:
     print("Decision: Insufficient evidence that B is better")
 ```
 
+**Output:**
+```
+A/B Testing: Frequentist vs. Bayesian
+======================================================================
+Design A: 96/1000 clicks (CTR = 0.096)
+Design B: 122/1000 clicks (CTR = 0.122)
+
+FREQUENTIST APPROACH
+----------------------------------------------------------------------
+p̂_A = 0.0960
+p̂_B = 0.1220
+Difference: 0.0260
+Z-statistic: 1.866
+P-value (one-sided): 0.0311
+Decision: Reject H₀, B is better than A (p < 0.05)
+```
+
+
 ### Bayesian Approach
 
 ```python
@@ -157,6 +175,28 @@ else:
     print(f"  ❌ Keep testing or stick with A")
 ```
 
+**Output:**
+```
+BAYESIAN APPROACH
+----------------------------------------------------------------------
+Posterior A: Beta(97, 905)
+  Posterior mean: 0.0968
+
+Posterior B: Beta(123, 879)
+  Posterior mean: 0.1228
+
+P(p_B > p_A | data) = 0.9684
+
+Interpretation: There is a 96.8% probability that B is better than A
+Expected lift: 28.0%
+
+RECOMMENDATION:
+  ✅ Deploy Design B (>95% certain it's better)
+```
+
+![Plot](images/output_bbc7b528f897.png)
+
+
 ## Application 2: Estimating Coin Fairness
 
 ### Problem
@@ -251,6 +291,116 @@ plt.tight_layout()
 plt.savefig('sequential_coin_testing.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
+
+**Output:**
+```
+After  10 flips: p̂=0.500, 95% CI=[0.234, 0.766], P(fair)=0.266
+After  30 flips: p̂=0.688, 95% CI=[0.520, 0.833], P(fair)=0.049
+After  33 flips: p̂=0.686, 95% CI=[0.525, 0.826], P(fair)=0.045
+After  49 flips: p̂=0.667, 95% CI=[0.533, 0.788], P(fair)=0.042
+After  50 flips: p̂=0.673, 95% CI=[0.541, 0.792], P(fair)=0.033
+After  51 flips: p̂=0.660, 95% CI=[0.529, 0.780], P(fair)=0.048
+After  61 flips: p̂=0.651, 95% CI=[0.530, 0.763], P(fair)=0.049
+After  62 flips: p̂=0.656, 95% CI=[0.537, 0.767], P(fair)=0.040
+After  64 flips: p̂=0.652, 95% CI=[0.534, 0.761], P(fair)=0.045
+After  65 flips: p̂=0.657, 95% CI=[0.540, 0.765], P(fair)=0.036
+After  66 flips: p̂=0.662, 95% CI=[0.546, 0.768], P(fair)=0.029
+After  67 flips: p̂=0.667, 95% CI=[0.552, 0.772], P(fair)=0.023
+After  68 flips: p̂=0.657, 95% CI=[0.543, 0.763], P(fair)=0.032
+After  69 flips: p̂=0.662, 95% CI=[0.549, 0.767], P(fair)=0.026
+After  70 flips: p̂=0.653, 95% CI=[0.540, 0.758], P(fair)=0.036
+After  71 flips: p̂=0.644, 95% CI=[0.531, 0.749], P(fair)=0.050
+After  72 flips: p̂=0.649, 95% CI=[0.537, 0.753], P(fair)=0.041
+After  73 flips: p̂=0.653, 95% CI=[0.543, 0.756], P(fair)=0.033
+After  74 flips: p̂=0.645, 95% CI=[0.535, 0.748], P(fair)=0.045
+After  86 flips: p̂=0.636, 95% CI=[0.534, 0.733], P(fair)=0.048
+After 100 flips: p̂=0.627, 95% CI=[0.532, 0.718], P(fair)=0.055
+After 101 flips: p̂=0.631, 95% CI=[0.536, 0.721], P(fair)=0.046
+After 103 flips: p̂=0.629, 95% CI=[0.534, 0.718], P(fair)=0.050
+After 104 flips: p̂=0.632, 95% CI=[0.539, 0.721], P(fair)=0.042
+After 106 flips: p̂=0.630, 95% CI=[0.537, 0.718], P(fair)=0.045
+After 107 flips: p̂=0.633, 95% CI=[0.541, 0.721], P(fair)=0.038
+After 108 flips: p̂=0.627, 95% CI=[0.535, 0.715], P(fair)=0.049
+After 109 flips: p̂=0.631, 95% CI=[0.539, 0.718], P(fair)=0.041
+After 110 flips: p̂=0.634, 95% CI=[0.543, 0.720], P(fair)=0.035
+After 111 flips: p̂=0.637, 95% CI=[0.547, 0.723], P(fair)=0.029
+After 112 flips: p̂=0.640, 95% CI=[0.550, 0.726], P(fair)=0.024
+After 113 flips: p̂=0.635, 95% CI=[0.545, 0.720], P(fair)=0.032
+After 114 flips: p̂=0.629, 95% CI=[0.540, 0.715], P(fair)=0.041
+After 133 flips: p̂=0.622, 95% CI=[0.539, 0.702], P(fair)=0.044
+After 134 flips: p̂=0.625, 95% CI=[0.542, 0.704], P(fair)=0.037
+After 135 flips: p̂=0.620, 95% CI=[0.538, 0.700], P(fair)=0.047
+After 136 flips: p̂=0.623, 95% CI=[0.541, 0.702], P(fair)=0.040
+After 137 flips: p̂=0.626, 95% CI=[0.544, 0.704], P(fair)=0.034
+After 138 flips: p̂=0.621, 95% CI=[0.540, 0.700], P(fair)=0.043
+After 139 flips: p̂=0.624, 95% CI=[0.543, 0.702], P(fair)=0.037
+After 140 flips: p̂=0.620, 95% CI=[0.539, 0.698], P(fair)=0.045
+After 142 flips: p̂=0.618, 95% CI=[0.538, 0.695], P(fair)=0.048
+After 143 flips: p̂=0.621, 95% CI=[0.541, 0.698], P(fair)=0.042
+After 144 flips: p̂=0.623, 95% CI=[0.543, 0.700], P(fair)=0.036
+After 145 flips: p̂=0.626, 95% CI=[0.546, 0.702], P(fair)=0.031
+After 146 flips: p̂=0.628, 95% CI=[0.549, 0.704], P(fair)=0.026
+After 147 flips: p̂=0.624, 95% CI=[0.545, 0.700], P(fair)=0.033
+After 148 flips: p̂=0.627, 95% CI=[0.548, 0.702], P(fair)=0.028
+After 149 flips: p̂=0.629, 95% CI=[0.551, 0.704], P(fair)=0.024
+After 150 flips: p̂=0.632, 95% CI=[0.554, 0.706], P(fair)=0.020
+After 151 flips: p̂=0.627, 95% CI=[0.550, 0.702], P(fair)=0.026
+After 152 flips: p̂=0.630, 95% CI=[0.552, 0.704], P(fair)=0.022
+After 153 flips: p̂=0.632, 95% CI=[0.555, 0.706], P(fair)=0.018
+After 154 flips: p̂=0.635, 95% CI=[0.558, 0.708], P(fair)=0.016
+After 155 flips: p̂=0.631, 95% CI=[0.554, 0.704], P(fair)=0.020
+After 156 flips: p̂=0.633, 95% CI=[0.557, 0.706], P(fair)=0.017
+After 157 flips: p̂=0.629, 95% CI=[0.553, 0.702], P(fair)=0.021
+After 158 flips: p̂=0.625, 95% CI=[0.549, 0.698], P(fair)=0.027
+After 159 flips: p̂=0.627, 95% CI=[0.551, 0.700], P(fair)=0.023
+After 160 flips: p̂=0.623, 95% CI=[0.548, 0.696], P(fair)=0.029
+After 161 flips: p̂=0.626, 95% CI=[0.550, 0.698], P(fair)=0.024
+After 162 flips: p̂=0.622, 95% CI=[0.547, 0.694], P(fair)=0.030
+After 163 flips: p̂=0.618, 95% CI=[0.543, 0.691], P(fair)=0.037
+After 164 flips: p̂=0.620, 95% CI=[0.546, 0.693], P(fair)=0.032
+After 165 flips: p̂=0.623, 95% CI=[0.548, 0.695], P(fair)=0.028
+After 166 flips: p̂=0.619, 95% CI=[0.545, 0.691], P(fair)=0.034
+After 167 flips: p̂=0.621, 95% CI=[0.547, 0.693], P(fair)=0.030
+After 168 flips: p̂=0.624, 95% CI=[0.550, 0.695], P(fair)=0.026
+After 169 flips: p̂=0.626, 95% CI=[0.552, 0.697], P(fair)=0.022
+After 170 flips: p̂=0.628, 95% CI=[0.555, 0.698], P(fair)=0.019
+After 171 flips: p̂=0.624, 95% CI=[0.551, 0.695], P(fair)=0.023
+After 172 flips: p̂=0.626, 95% CI=[0.553, 0.697], P(fair)=0.020
+After 173 flips: p̂=0.629, 95% CI=[0.556, 0.698], P(fair)=0.017
+After 174 flips: p̂=0.631, 95% CI=[0.558, 0.700], P(fair)=0.015
+After 175 flips: p̂=0.627, 95% CI=[0.555, 0.697], P(fair)=0.018
+After 176 flips: p̂=0.629, 95% CI=[0.557, 0.699], P(fair)=0.016
+After 177 flips: p̂=0.626, 95% CI=[0.554, 0.695], P(fair)=0.020
+After 178 flips: p̂=0.628, 95% CI=[0.556, 0.697], P(fair)=0.017
+After 179 flips: p̂=0.624, 95% CI=[0.553, 0.693], P(fair)=0.021
+After 180 flips: p̂=0.626, 95% CI=[0.555, 0.695], P(fair)=0.018
+After 181 flips: p̂=0.628, 95% CI=[0.557, 0.697], P(fair)=0.015
+After 182 flips: p̂=0.630, 95% CI=[0.560, 0.699], P(fair)=0.013
+After 183 flips: p̂=0.627, 95% CI=[0.556, 0.695], P(fair)=0.017
+After 184 flips: p̂=0.624, 95% CI=[0.553, 0.692], P(fair)=0.021
+After 185 flips: p̂=0.626, 95% CI=[0.555, 0.693], P(fair)=0.018
+After 186 flips: p̂=0.622, 95% CI=[0.552, 0.690], P(fair)=0.022
+After 187 flips: p̂=0.619, 95% CI=[0.549, 0.687], P(fair)=0.027
+After 188 flips: p̂=0.621, 95% CI=[0.551, 0.689], P(fair)=0.023
+After 189 flips: p̂=0.623, 95% CI=[0.553, 0.690], P(fair)=0.020
+After 190 flips: p̂=0.625, 95% CI=[0.556, 0.692], P(fair)=0.017
+After 191 flips: p̂=0.627, 95% CI=[0.558, 0.694], P(fair)=0.015
+After 192 flips: p̂=0.624, 95% CI=[0.555, 0.690], P(fair)=0.018
+After 193 flips: p̂=0.621, 95% CI=[0.551, 0.687], P(fair)=0.023
+After 194 flips: p̂=0.617, 95% CI=[0.548, 0.684], P(fair)=0.028
+After 195 flips: p̂=0.619, 95% CI=[0.551, 0.686], P(fair)=0.024
+After 196 flips: p̂=0.621, 95% CI=[0.553, 0.687], P(fair)=0.021
+After 197 flips: p̂=0.618, 95% CI=[0.550, 0.684], P(fair)=0.025
+After 198 flips: p̂=0.615, 95% CI=[0.547, 0.681], P(fair)=0.031
+After 199 flips: p̂=0.612, 95% CI=[0.544, 0.678], P(fair)=0.037
+After 200 flips: p̂=0.609, 95% CI=[0.541, 0.675], P(fair)=0.045
+
+Sequential Bayesian Testing
+======================================================================
+```
+
+![Plot](images/output_f72ed70d3e38.png)
+
 
 ## Application 3: Quality Control in Manufacturing
 
@@ -407,6 +557,35 @@ plt.savefig('quality_control_bayesian.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Quality Control: Bayesian Inference
+======================================================================
+Target: 10.0 mm ± 0.5 mm
+Sample size: 30
+Sample mean: 10.044 mm
+Sample std: 0.270 mm
+
+Prior: Normal-Gamma(10.0, 1, 3, 1.0)
+Posterior: Normal-Gamma(10.042, 31, 18.0, 2.058)
+
+Process Mean (μ):
+  Estimate: 10.042 mm
+  95% CI: [9.919, 10.165] mm
+
+P(process mean within spec) = 1.000
+
+Process Variance (σ²):
+  Estimate: 0.121
+  Std Dev: 0.348 mm
+
+Predicted proportion of future bolts in spec: 84.3%
+  ⚠️ WARNING: Process may need adjustment!
+```
+
+![Plot](images/output_f741d52d3223.png)
+
+
 ## Application 4: Email Spam Rate Estimation
 
 ### Problem
@@ -503,6 +682,23 @@ plt.tight_layout()
 plt.savefig('spam_rate_sequential.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
+
+**Output:**
+```
+Email Spam Rate: Sequential Bayesian Updating
+======================================================================
+Prior belief: Beta(7, 13)
+Prior mean: 0.350
+
+After  10 emails: Beta( 10,  20), mean=0.333, 95% CI=[0.179, 0.508]
+After  30 emails: Beta( 21,  29), mean=0.420, 95% CI=[0.288, 0.558]
+After  80 emails: Beta( 41,  59), mean=0.410, 95% CI=[0.316, 0.507]
+After 180 emails: Beta( 79, 121), mean=0.395, 95% CI=[0.328, 0.463]
+After 380 emails: Beta(160, 240), mean=0.400, 95% CI=[0.353, 0.448]
+```
+
+![Plot](images/output_a1e4688f3562.png)
+
 
 ## Application 5: Machine Learning - Hyperparameter Tuning
 
@@ -633,6 +829,38 @@ plt.savefig('hyperparameter_optimization.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Bayesian Hyperparameter Optimization
+======================================================================
+Goal: Find optimal learning rate for neural network
+
+Try LR=0.0381: Performance=0.962
+Try LR=0.0164: Performance=1.000
+Try LR=0.0068: Performance=1.000
+Try LR=0.0711: Performance=0.946
+Try LR=0.0030: Performance=0.987
+
+Switch to Bayesian optimization...
+
+Iteration 1: LR=0.0112, Performance=0.989
+Iteration 2: LR=0.0072, Performance=0.948
+Iteration 3: LR=0.0259, Performance=1.000
+Iteration 4: LR=0.0012, Performance=0.990
+Iteration 5: LR=0.0090, Performance=0.986
+Iteration 6: LR=0.0010, Performance=0.986
+Iteration 7: LR=0.0224, Performance=1.000
+Iteration 8: LR=0.0204, Performance=1.000
+Iteration 9: LR=0.0113, Performance=0.988
+Iteration 10: LR=0.0259, Performance=1.000
+
+Best learning rate found: 0.0164
+Best performance: 1.000
+```
+
+![Plot](images/output_8af478398449.png)
+
+
 ## Summary
 
 ### Key Applications Covered
@@ -679,6 +907,10 @@ from sklearn.gaussian_process import GaussianProcessRegressor
 import gpytorch  # Deep GPs
 import gpyopt  # Bayesian optimization
 ```
+
+**Output:**
+`Error: ModuleNotFoundError: No module named 'pymc'`
+
 
 ## Final Thoughts
 

@@ -81,6 +81,23 @@ else:
     print(f"Overlap region: [{max(lower_A, lower_B):.1%}, {min(upper_A, upper_B):.1%}]")
 ```
 
+**Output:**
+```
+Design A:
+  Conversion rate: 12.0%
+  95% CI: [10.0%, 14.0%]
+
+Design B:
+  Conversion rate: 14.5%
+  95% CI: [12.3%, 16.7%]
+
+Conclusion: The CIs overlap - need more data or formal significance test
+Overlap region: [12.3%, 14.0%]
+```
+
+![Plot](images/output_f9b4db294851.png)
+
+
 **Output**:
 ```
 Design A:
@@ -173,6 +190,20 @@ plt.tight_layout()
 plt.savefig('quality_control_chart.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
+
+**Output:**
+```
+Sample: n=25, mean=10.150 mm, std=0.300 mm
+
+95% CI for population mean: [10.026, 10.274] mm
+Target value: 10.000 mm
+
+Conclusion: Target 10.0 mm is NOT in the 95% CI
+Process may be off-target - investigate!
+```
+
+![Plot](images/output_3a052874b316.png)
+
 
 **Output**:
 ```
@@ -288,6 +319,32 @@ plt.tight_layout()
 plt.savefig('sample_size_vs_margin.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
+
+**Output:**
+```
+Current Poll Results:
+  Sample size: 800
+  Support for Candidate A: 54.0%
+  Standard error: 1.762%
+  Margin of error (95%): ±3.5%
+  95% CI: [50.5%, 57.5%]
+
+Report: Candidate A has 54% ± 3% support
+
+======================================================================
+Required Sample Sizes for Different Margins of Error
+======================================================================
+      Desired Margin |   Required n |  Cost Factor
+----------------------------------------------------------------------
+±1% (0.01)        |         9604 |         8.99x
+±2% (0.02)        |         2401 |         2.25x
+±3% (0.03)        |         1068 |         1.00x
+±4% (0.04)        |          601 |         0.56x
+±5% (0.05)        |          385 |         0.36x
+```
+
+![Plot](images/output_653672be8c09.png)
+
 
 **Output**:
 ```
@@ -409,6 +466,32 @@ for desired_margin in [1.0, 2.0, 3.0, 4.0]:
     print(f"For margin ±{desired_margin:.1f} mmHg: need n ≈ {n_required:.0f} patients")
 ```
 
+**Output:**
+```
+Clinical Trial Results:
+  Sample size: 40 patients
+  Mean BP reduction: 12.5 mmHg
+  Standard deviation: 8.0 mmHg
+  Standard error: 1.26 mmHg
+
+95% CI for mean reduction: [9.94, 15.06] mmHg
+
+Conclusion: The entire 95% CI is above 0
+Strong evidence that the drug reduces blood pressure.
+We're 95% confident the true mean reduction is at least 9.9 mmHg
+
+============================================================
+Sample Size Planning for Future Trials
+============================================================
+For margin ±1.0 mmHg: need n ≈ 246 patients
+For margin ±2.0 mmHg: need n ≈ 62 patients
+For margin ±3.0 mmHg: need n ≈ 28 patients
+For margin ±4.0 mmHg: need n ≈ 16 patients
+```
+
+![Plot](images/output_a79009292f08.png)
+
+
 **Output**:
 ```
 Clinical Trial Results:
@@ -522,6 +605,32 @@ plt.savefig('ml_accuracy_ci.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Model Performance:
+  Test set size: 200
+  Correct predictions: 170
+  Accuracy: 85.0%
+  95% CI: [80.1%, 89.9%]
+  Margin: ±4.9%
+
+Report: Model achieves 85% ± 5% accuracy
+
+======================================================================
+Effect of Test Set Size on CI Width (assuming 85% accuracy)
+======================================================================
+   Test Size |   Accuracy |                    95% CI |    Width
+----------------------------------------------------------------------
+          50 |     84.0% | [ 73.8%,  94.2%] |   20.3%
+         100 |     85.0% | [ 78.0%,  92.0%] |   14.0%
+         200 |     85.0% | [ 80.1%,  89.9%] |    9.9%
+         500 |     85.0% | [ 81.9%,  88.1%] |    6.3%
+        1000 |     85.0% | [ 82.8%,  87.2%] |    4.4%
+```
+
+![Plot](images/output_7911b2359e00.png)
+
+
 ## Summary of Applications
 
 ### Domain Coverage
@@ -565,6 +674,9 @@ margin = 1.96 * se  # 0.00191
 ci = (p - margin, p + margin)  # (0.0481, 0.0519) or (4.81%, 5.19%)
 ```
 
+**Output:** `(No output)`
+
+
 ### Problem 2: Required Sample for Drug Trial
 You want to detect a mean blood pressure reduction of 10 mmHg with margin ±2 mmHg. Population std is 12 mmHg. How many patients?
 
@@ -575,6 +687,9 @@ E = 2
 z = 1.96
 n = (z * sigma / E)**2  # (1.96 * 12 / 2)^2 = 138.3 ≈ 139 patients
 ```
+
+**Output:** `(No output)`
+
 
 ### Problem 3: Quality Control Decision
 Bolt diameter CI: [9.92, 10.08] mm. Target: 10.0 mm. Spec limits: 9.90-10.10 mm. What action?

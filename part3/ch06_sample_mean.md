@@ -44,20 +44,20 @@ A useful mental model for sampling:
 
 Given a sample \(x_1, x_2, \ldots, x_n\), the **sample mean** is:
 
-\[
+$$
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-\]
+$$
 
 ### Key Property: Unbiasedness
 
 **Theorem**: If \(X_1, X_2, \ldots, X_n\) are independent random variables drawn from a distribution with mean μ, then:
 
-\[
+$$
 E[\bar{X}] = \mu
-\]
+$$
 
 **Proof**:
-\[
+$$
 \begin{align}
 E[\bar{X}] &= E\left[\frac{1}{n}\sum_{i=1}^{n} X_i\right] \\
 &= \frac{1}{n}\sum_{i=1}^{n} E[X_i] \\
@@ -65,7 +65,7 @@ E[\bar{X}] &= E\left[\frac{1}{n}\sum_{i=1}^{n} X_i\right] \\
 &= \frac{1}{n} \cdot n\mu \\
 &= \mu
 \end{align}
-\]
+$$
 
 This means the sample mean is an **unbiased estimator** of the population mean.
 
@@ -75,12 +75,12 @@ This means the sample mean is an **unbiased estimator** of the population mean.
 
 **Theorem**: If \(X_1, X_2, \ldots, X_n\) are **independent** random variables from a distribution with variance σ², then:
 
-\[
+$$
 \text{Var}(\bar{X}) = \frac{\sigma^2}{n}
-\]
+$$
 
 **Proof**:
-\[
+$$
 \begin{align}
 \text{Var}(\bar{X}) &= \text{Var}\left(\frac{1}{n}\sum_{i=1}^{n} X_i\right) \\
 &= \frac{1}{n^2}\text{Var}\left(\sum_{i=1}^{n} X_i\right) \\
@@ -89,15 +89,15 @@ This means the sample mean is an **unbiased estimator** of the population mean.
 &= \frac{1}{n^2} \cdot n\sigma^2 \\
 &= \frac{\sigma^2}{n}
 \end{align}
-\]
+$$
 
 ### Standard Error
 
 The **standard error** of the sample mean is:
 
-\[
+$$
 \text{SE}(\bar{X}) = \sqrt{\text{Var}(\bar{X})} = \frac{\sigma}{\sqrt{n}}
-\]
+$$
 
 **Key Insight**: The standard error decreases as \(\sqrt{n}\). To halve the standard error, you need 4 times as many samples!
 
@@ -168,6 +168,19 @@ for n in sample_sizes:
     print(f"{n:11d} | {theo_se:14.4f} | {emp_se:12.4f} | {emp_se/theo_se:5.3f}")
 ```
 
+**Output:**
+```
+Sample Size | Theoretical SE | Empirical SE | Ratio
+------------------------------------------------------------
+          5 |         1.2910 |       1.2898 | 0.999
+         10 |         0.9129 |       0.9158 | 1.003
+         30 |         0.5270 |       0.5274 | 1.001
+        100 |         0.2887 |       0.2898 | 1.004
+```
+
+![Plot](images/output_c29173d98eb3.png)
+
+
 **Output**:
 ```
 Sample Size | Theoretical SE | Empirical SE | Ratio
@@ -189,9 +202,9 @@ Sample Size | Theoretical SE | Empirical SE | Ratio
 
 When sampling **without replacement** from a finite population of size N:
 
-\[
+$$
 \text{Var}(\bar{X}) = \frac{\sigma^2}{n} \cdot \frac{N-n}{N-1}
-\]
+$$
 
 The factor \(\frac{N-n}{N-1}\) is called the **finite population correction** (FPC).
 
@@ -199,9 +212,9 @@ The factor \(\frac{N-n}{N-1}\) is called the **finite population correction** (F
 
 If \(n < 0.05N\) (sample is less than 5% of population), you can ignore the FPC:
 
-\[
+$$
 \frac{N-n}{N-1} \approx 1
-\]
+$$
 
 and use \(\text{Var}(\bar{X}) = \frac{\sigma^2}{n}\).
 
@@ -246,6 +259,17 @@ for n in sample_sizes:
     
     print(f"{n:11d} | {var_with_fpc:12.4f} | {var_without_fpc:15.4f} | {empirical_var:13.4f} | {fpc:10.4f}")
 ```
+
+**Output:**
+```
+Sample Size | Var with FPC | Var without FPC | Empirical Var | FPC Factor
+--------------------------------------------------------------------------------
+          5 |      16.7844 |         17.4911 |       16.7831 |     0.9596
+         10 |       7.9505 |          8.7456 |        7.8063 |     0.9091
+         20 |       3.5336 |          4.3728 |        3.5317 |     0.8081
+         40 |       1.3251 |          2.1864 |        1.2967 |     0.6061
+```
+
 
 **Output**:
 ```
@@ -321,31 +345,35 @@ plt.savefig('coin_flip_sampling.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+![Plot](images/output_2c25fd860523.png)
+
+
 ## Practice Problems
 
 ### Problem 1: Quality Control
 A factory produces light bulbs with a lifetime that has mean μ = 1000 hours and standard deviation σ = 100 hours. You test 25 bulbs. What is the standard error of the sample mean?
 
 **Solution**:
-\[
+$$
 \text{SE}(\bar{X}) = \frac{\sigma}{\sqrt{n}} = \frac{100}{\sqrt{25}} = \frac{100}{5} = 20 \text{ hours}
-\]
+$$
 
 ### Problem 2: Sample Size Calculation
 You want to estimate the mean height of adults with a standard error of 1 cm. If the population standard deviation is 10 cm, how many people do you need to sample?
 
 **Solution**:
-\[
+$$
 \text{SE} = \frac{\sigma}{\sqrt{n}} \implies 1 = \frac{10}{\sqrt{n}} \implies \sqrt{n} = 10 \implies n = 100
-\]
+$$
 
 ### Problem 3: Comparing Precision
 You have two estimators for μ. The first uses n = 100 samples, the second uses n = 400. How much more precise is the second estimator?
 
 **Solution**:
-\[
+$$
 \frac{\text{SE}_1}{\text{SE}_2} = \frac{\sigma/\sqrt{100}}{\sigma/\sqrt{400}} = \frac{\sqrt{400}}{\sqrt{100}} = \frac{20}{10} = 2
-\]
+$$
 
 The second estimator is **twice as precise** (SE is half as large).
 

@@ -15,9 +15,9 @@
 
 Given data \(x_1, \ldots, x_n\) and parameter θ:
 
-\[
+$$
 p(\theta \mid x_1, \ldots, x_n) = \frac{p(x_1, \ldots, x_n \mid \theta) \cdot p(\theta)}{p(x_1, \ldots, x_n)}
-\]
+$$
 
 **Components:**
 
@@ -30,15 +30,15 @@ p(\theta \mid x_1, \ldots, x_n) = \frac{p(x_1, \ldots, x_n \mid \theta) \cdot p(
 
 Since the evidence is just a normalizing constant:
 
-\[
+$$
 p(\theta \mid \text{data}) \propto p(\text{data} \mid \theta) \cdot p(\theta)
-\]
+$$
 
 Or more intuitively:
 
-\[
+$$
 \text{Posterior} \propto \text{Likelihood} \times \text{Prior}
-\]
+$$
 
 ## Example 1: Coin Flipping (Beta-Binomial)
 
@@ -50,23 +50,23 @@ Estimate probability \(p\) of heads from \(n\) coin flips with \(k\) heads obser
 
 **Prior**: Beta distribution (common choice for probabilities)
 
-\[
+$$
 p(p) = \text{Beta}(\alpha, \beta) = \frac{p^{\alpha-1}(1-p)^{\beta-1}}{B(\alpha, \beta)}
-\]
+$$
 
 where \(B(\alpha, \beta)\) is the Beta function.
 
 **Likelihood**: Binomial
 
-\[
+$$
 p(k \mid p, n) = \binom{n}{k} p^k (1-p)^{n-k}
-\]
+$$
 
 **Posterior**: Also Beta! (conjugate prior)
 
-\[
+$$
 p(p \mid k, n) = \text{Beta}(\alpha + k, \beta + n - k)
-\]
+$$
 
 **Interpretation**:
 - \(\alpha\) = prior "pseudo-counts" of heads
@@ -168,15 +168,53 @@ for alpha, beta, label in priors:
     print(f"  Std: {np.sqrt(post_var):.3f}")
 ```
 
+**Output:**
+```
+Bayesian Coin Flipping Example
+======================================================================
+True p: 0.7
+Data: 14 heads in 20 flips
+
+
+Posterior Statistics:
+
+Uniform (uninformative):
+  Posterior: Beta(15, 7)
+  Mean: 0.682
+  Mode: 0.700
+  Std: 0.097
+
+Weak prior towards 0.5:
+  Posterior: Beta(16, 8)
+  Mean: 0.667
+  Mode: 0.682
+  Std: 0.094
+
+Strong prior towards 0.5:
+  Posterior: Beta(24, 16)
+  Mean: 0.600
+  Mode: 0.605
+  Std: 0.077
+
+Prior favoring heads:
+  Posterior: Beta(19, 8)
+  Mean: 0.704
+  Mode: 0.720
+  Std: 0.086
+```
+
+![Plot](images/output_9e2ec49c1db7.png)
+
+
 ## Credible Intervals
 
 ### Definition
 
 A **95% credible interval** \([a, b]\) satisfies:
 
-\[
+$$
 P(a \leq \theta \leq b \mid \text{data}) = 0.95
-\]
+$$
 
 **Interpretation**: "There is a 95% probability that θ lies in \([a, b]\) given the data we observed."
 
@@ -228,27 +266,43 @@ print(f"\n95% Frequentist confidence interval: [{ci_lower:.3f}, {ci_upper:.3f}]"
 print(f"\nNote: These are often numerically similar but have different interpretations!")
 ```
 
+**Output:**
+```
+Credible Intervals
+======================================================================
+
+95% Equal-tailed credible interval: [0.478, 0.854]
+
+Interpretation: Given the data, there is a 95% probability
+that the true probability of heads is between 0.478 and 0.854
+
+95% Frequentist confidence interval: [0.499, 0.901]
+
+Note: These are often numerically similar but have different interpretations!
+```
+
+
 ## Prior Selection
 
 ### Types of Priors
 
 **1. Informative Prior**: Incorporates specific prior knowledge
 
-\[
+$$
 p = \text{Beta}(20, 5) \quad \text{(strong belief that } p \approx 0.8\text{)}
-\]
+$$
 
 **2. Weakly Informative Prior**: General shape but not too strong
 
-\[
+$$
 p = \text{Beta}(2, 2) \quad \text{(weak preference for } p \approx 0.5\text{)}
-\]
+$$
 
 **3. Non-informative (Uniform) Prior**: No prior knowledge
 
-\[
+$$
 p = \text{Beta}(1, 1) = \text{Uniform}(0, 1)
-\]
+$$
 
 ### Choosing Priors
 
@@ -264,9 +318,9 @@ p = \text{Beta}(1, 1) = \text{Uniform}(0, 1)
 
 One beautiful property: **today's posterior = tomorrow's prior**
 
-\[
+$$
 \text{Prior}_1 \xrightarrow{\text{Data}_1} \text{Posterior}_1 = \text{Prior}_2 \xrightarrow{\text{Data}_2} \text{Posterior}_2
-\]
+$$
 
 ### Example: Sequential Coin Flips
 
@@ -334,15 +388,27 @@ print(f"Posterior mean: {alpha / (alpha + beta):.3f}")
 print(f"True p: {true_p}")
 ```
 
+**Output:**
+```
+Sequential Bayesian Updating
+======================================================================
+Final posterior after all data: Beta(55, 32)
+Posterior mean: 0.632
+True p: 0.6
+```
+
+![Plot](images/output_dadd51eb0e0f.png)
+
+
 ## Posterior Predictive Distribution
 
 ### Definition
 
 Predict **new data** \(\tilde{x}\) given observed data:
 
-\[
+$$
 p(\tilde{x} \mid x_1, \ldots, x_n) = \int p(\tilde{x} \mid \theta) \cdot p(\theta \mid x_1, \ldots, x_n) \, d\theta
-\]
+$$
 
 **Interpretation**: Average predictions over all possible parameter values, weighted by their posterior probability.
 
@@ -375,15 +441,31 @@ print(f"\n(Compare to MLE: {k/n:.3f})")
 print(f"\nNote: Bayesian prediction accounts for uncertainty in p!")
 ```
 
+**Output:**
+```
+Posterior Predictive Distribution
+======================================================================
+
+Observed: 7 heads in 10 flips
+Posterior: Beta(8, 4)
+
+Predicted probability of heads on next flip: 0.667
+
+(Compare to MLE: 0.700)
+
+Note: Bayesian prediction accounts for uncertainty in p!
+```
+
+
 ## Summary
 
 ### Key Concepts
 
 **Bayes' Theorem**:
 
-\[
+$$
 p(\theta \mid \text{data}) = \frac{p(\text{data} \mid \theta) \cdot p(\theta)}{p(\text{data})}
-\]
+$$
 
 **Posterior ∝ Likelihood × Prior**
 

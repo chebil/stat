@@ -26,7 +26,7 @@ parts:
           title: "2.1 Plotting 2D Data"
         - file: part1/ch02_correlation
           title: "2.2 Correlation"
-        - file: part1/ch02_you_should
+        - file: part2/ch02_you_should
           title: "2.3 You Should Know"
 
   - caption: Part II - Probability

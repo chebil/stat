@@ -6,9 +6,9 @@
 
 A prior distribution is **conjugate** to a likelihood if the posterior has the **same distributional form** as the prior.
 
-\[
+$$
 \text{Prior family} + \text{Likelihood} \Rightarrow \text{Posterior in same family}
-\]
+$$
 
 **Why Conjugacy Matters**:
 - Closed-form posterior (no numerical integration needed)
@@ -40,35 +40,35 @@ where:
 
 **Likelihood**: Binomial
 
-\[
+$$
 p(k \mid p, n) = \binom{n}{k} p^k (1-p)^{n-k}
-\]
+$$
 
 **Prior**: Beta
 
-\[
+$$
 p(p) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} p^{\alpha-1}(1-p)^{\beta-1}
-\]
+$$
 
 ### Posterior Derivation
 
-\[
+$$
 p(p \mid k, n) \propto p(k \mid p) \cdot p(p)
-\]
+$$
 
-\[
+$$
 \propto p^k (1-p)^{n-k} \cdot p^{\alpha-1}(1-p)^{\beta-1}
-\]
+$$
 
-\[
+$$
 = p^{(\alpha+k)-1}(1-p)^{(\beta+n-k)-1}
-\]
+$$
 
 This is the kernel of:
 
-\[
+$$
 p(p \mid k, n) = \text{Beta}(\alpha + k, \beta + n - k)
-\]
+$$
 
 ### Hyperparameter Interpretation
 
@@ -81,9 +81,9 @@ p(p \mid k, n) = \text{Beta}(\alpha + k, \beta + n - k)
 
 **Posterior mean**:
 
-\[
+$$
 \frac{\alpha + k}{\alpha + \beta + n} = \frac{\alpha + \beta}{\alpha + \beta + n} \cdot \frac{\alpha}{\alpha + \beta} + \frac{n}{\alpha + \beta + n} \cdot \frac{k}{n}
-\]
+$$
 
 This is a **weighted average** of prior mean and MLE!
 
@@ -151,41 +151,59 @@ plt.savefig('beta_binomial_conjugate.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Beta-Binomial Conjugacy Example
+======================================================================
+
+Prior: Beta(2, 2)
+Prior mean: 0.500
+
+Data: 15 successes in 20 trials
+MLE: 0.750
+
+Posterior: Beta(17, 7)
+Posterior mean: 0.708
+```
+
+![Plot](images/output_65262f3f4099.png)
+
+
 ## Gamma-Poisson (Detailed)
 
 ### The Setup
 
 **Likelihood**: Poisson observations \(x_1, \ldots, x_n\)
 
-\[
+$$
 p(x_1, \ldots, x_n \mid \lambda) = \prod_{i=1}^{n} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!} \propto \lambda^{\sum x_i} e^{-n\lambda}
-\]
+$$
 
 **Prior**: Gamma
 
-\[
+$$
 p(\lambda) = \text{Gamma}(\alpha, \beta) = \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha-1} e^{-\beta \lambda}
-\]
+$$
 
 ### Posterior Derivation
 
-\[
+$$
 p(\lambda \mid x_1, \ldots, x_n) \propto p(x_1, \ldots, x_n \mid \lambda) \cdot p(\lambda)
-\]
+$$
 
-\[
+$$
 \propto \lambda^{\sum x_i} e^{-n\lambda} \cdot \lambda^{\alpha-1} e^{-\beta \lambda}
-\]
+$$
 
-\[
+$$
 = \lambda^{(\alpha + \sum x_i) - 1} e^{-(\beta + n)\lambda}
-\]
+$$
 
 This is the kernel of:
 
-\[
+$$
 p(\lambda \mid x_1, \ldots, x_n) = \text{Gamma}(\alpha + \sum x_i, \beta + n)
-\]
+$$
 
 ### Hyperparameter Interpretation
 
@@ -255,43 +273,62 @@ plt.savefig('gamma_poisson_conjugate.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Gamma-Poisson Conjugacy Example
+======================================================================
+
+True λ: 5.0
+Data: 30 observations, sum = 142
+MLE: 4.733
+
+Prior: Gamma(2, 1)
+Prior mean: 2.000
+
+Posterior: Gamma(144, 31)
+Posterior mean: 4.645
+```
+
+![Plot](images/output_3b698bf38975.png)
+
+
 ## Normal-Normal (Known Variance)
 
 ### The Setup
 
 **Likelihood**: \(x_1, \ldots, x_n \sim N(\mu, \sigma^2)\) where \(\sigma^2\) is known
 
-\[
+$$
 p(x_1, \ldots, x_n \mid \mu) \propto \exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i - \mu)^2\right)
-\]
+$$
 
 **Prior**: \(\mu \sim N(\mu_0, \sigma_0^2)\)
 
-\[
+$$
 p(\mu) \propto \exp\left(-\frac{(\mu - \mu_0)^2}{2\sigma_0^2}\right)
-\]
+$$
 
 ### Posterior (Closed Form)
 
 The posterior is also Normal:
 
-\[
+$$
 p(\mu \mid x_1, \ldots, x_n) = N(\mu_n, \sigma_n^2)
-\]
+$$
 
 where:
 
 **Posterior mean**:
 
-\[
+$$
 \mu_n = \frac{\sigma^2}{\sigma^2 + n\sigma_0^2} \mu_0 + \frac{n\sigma_0^2}{\sigma^2 + n\sigma_0^2} \bar{x}
-\]
+$$
 
 **Posterior variance**:
 
-\[
+$$
 \frac{1}{\sigma_n^2} = \frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}
-\]
+$$
 
 (Precision of posterior = precision of prior + precision of data)
 
@@ -367,41 +404,61 @@ plt.savefig('normal_normal_conjugate.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Normal-Normal Conjugacy Example
+======================================================================
+
+True μ: 5.0
+Known σ: 2.0
+Data: n = 10, x̄ = 5.896
+MLE: 5.896
+
+Prior: N(0.0, 25.0)
+
+Posterior: N(5.803, 0.394)
+Posterior mean: 5.803
+Posterior std: 0.627
+```
+
+![Plot](images/output_202a17daec93.png)
+
+
 ## Maximum A Posteriori (MAP) Estimation
 
 ### Definition
 
 The **MAP estimate** is the mode of the posterior distribution:
 
-\[
+$$
 \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} p(\theta \mid \text{data})
-\]
+$$
 
 Expanding:
 
-\[
+$$
 \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} p(\text{data} \mid \theta) \cdot p(\theta)
-\]
+$$
 
 Taking logs:
 
-\[
+$$
 \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \left[ \log p(\text{data} \mid \theta) + \log p(\theta) \right]
-\]
+$$
 
 ### MAP vs. MLE
 
 **MLE**:
 
-\[
+$$
 \hat{\theta}_{\text{MLE}} = \arg\max_{\theta} \log p(\text{data} \mid \theta)
-\]
+$$
 
 **MAP**:
 
-\[
+$$
 \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \left[ \log p(\text{data} \mid \theta) + \log p(\theta) \right]
-\]
+$$
 
 **Key insight**: MAP = MLE + log prior penalty
 
@@ -411,15 +468,15 @@ The log prior acts as a **regularization term**!
 
 **Example**: Normal prior \(\theta \sim N(0, \sigma_p^2)\)
 
-\[
+$$
 \log p(\theta) = -\frac{\theta^2}{2\sigma_p^2} + \text{const}
-\]
+$$
 
 So MAP becomes:
 
-\[
+$$
 \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \left[ \log p(\text{data} \mid \theta) - \frac{\theta^2}{2\sigma_p^2} \right]
-\]
+$$
 
 This is equivalent to **L2 regularization (Ridge regression)**!
 
@@ -497,6 +554,28 @@ plt.grid(alpha=0.3)
 plt.savefig('point_estimates_comparison.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
+
+**Output:**
+```
+Comparing Point Estimates: MLE, MAP, Posterior Mean
+======================================================================
+
+Data: 15 heads in 20 flips
+True p: 0.7
+
+Prior: Beta(2, 2)
+Posterior: Beta(17, 7)
+
+Point Estimates:
+  MLE (no prior):      0.7500
+  MAP (mode):          0.7273
+  Posterior mean:      0.7083
+  Posterior median:    0.7142
+  True p:              0.7000
+```
+
+![Plot](images/output_d8b38fc4e640.png)
+
 
 ## Summary
 

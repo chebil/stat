@@ -10,17 +10,17 @@
 
 Given data \(x_1, x_2, \ldots, x_n\) and a model with parameter θ, the **likelihood function** is:
 
-\[
+$$
 L(\theta \mid x_1, \ldots, x_n) = P(x_1, \ldots, x_n \mid \theta)
-\]
+$$
 
 ### For Independent Data
 
 If observations are **independent and identically distributed (i.i.d.)**:
 
-\[
+$$
 L(\theta) = \prod_{i=1}^{n} f(x_i \mid \theta)
-\]
+$$
 
 where \(f(x \mid \theta)\) is the probability (PMF) or density (PDF).
 
@@ -28,17 +28,17 @@ where \(f(x \mid \theta)\) is the probability (PMF) or density (PDF).
 
 In practice, we work with **log-likelihood** (easier to maximize):
 
-\[
+$$
 \ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log f(x_i \mid \theta)
-\]
+$$
 
 ## The MLE
 
 **Maximum Likelihood Estimate** \(\hat{\theta}_{\text{MLE}}\) is the value that maximizes \(L(\theta)\) or \(\ell(\theta)\):
 
-\[
+$$
 \hat{\theta}_{\text{MLE}} = \arg\max_{\theta} \ell(\theta)
-\]
+$$
 
 ### Finding the MLE
 
@@ -59,31 +59,31 @@ Flip a coin n times, observe k heads. Estimate p (probability of heads).
 **Model**: Each flip \(X_i \sim \text{Bernoulli}(p)\)
 
 **Likelihood**:
-\[
+$$
 L(p) = \prod_{i=1}^{n} p^{x_i}(1-p)^{1-x_i} = p^k(1-p)^{n-k}
-\]
+$$
 
 where k = number of heads.
 
 **Log-likelihood**:
-\[
+$$
 \ell(p) = k\log p + (n-k)\log(1-p)
-\]
+$$
 
 **Derivative**:
-\[
+$$
 \frac{d\ell}{dp} = \frac{k}{p} - \frac{n-k}{1-p}
-\]
+$$
 
 **Set to zero**:
-\[
+$$
 \frac{k}{p} = \frac{n-k}{1-p} \implies k(1-p) = p(n-k) \implies k = np
-\]
+$$
 
 **MLE**:
-\[
+$$
 \hat{p}_{\text{MLE}} = \frac{k}{n}
-\]
+$$
 
 The MLE is just the sample proportion!
 
@@ -158,6 +158,19 @@ plt.savefig('bernoulli_mle.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Bernoulli MLE Example
+======================================================================
+True p: 0.6
+Sample: 100 flips, 63 heads
+
+MLE estimate: p̂ = 0.630
+```
+
+![Plot](images/output_84a931ba1a29.png)
+
+
 ## Example 2: Normal Distribution
 
 ### Problem
@@ -167,34 +180,34 @@ Observe \(x_1, \ldots, x_n \sim N(\mu, \sigma^2)\). Estimate μ and σ².
 ### Solution
 
 **PDF**:
-\[
+$$
 f(x \mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
-\]
+$$
 
 **Log-likelihood**:
-\[
+$$
 \ell(\mu, \sigma^2) = -\frac{n}{2}\log(2\pi) - \frac{n}{2}\log(\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i - \mu)^2
-\]
+$$
 
 **Derivative w.r.t. μ**:
-\[
+$$
 \frac{\partial\ell}{\partial\mu} = \frac{1}{\sigma^2}\sum_{i=1}^{n}(x_i - \mu) = 0
-\]
+$$
 
 **MLE for μ**:
-\[
+$$
 \hat{\mu}_{\text{MLE}} = \frac{1}{n}\sum_{i=1}^{n}x_i = \bar{x}
-\]
+$$
 
 **Derivative w.r.t. σ²**:
-\[
+$$
 \frac{\partial\ell}{\partial\sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2}\sum_{i=1}^{n}(x_i - \mu)^2 = 0
-\]
+$$
 
 **MLE for σ²**:
-\[
+$$
 \hat{\sigma}^2_{\text{MLE}} = \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2
-\]
+$$
 
 Note: This uses \(n\) in denominator, not \(n-1\) (slightly biased for small n).
 
@@ -297,6 +310,29 @@ plt.savefig('normal_mle.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Normal Distribution MLE
+======================================================================
+True μ: 10, True σ: 2
+Sample size: 50
+
+Analytical MLE:
+  μ̂ = 9.549
+  σ̂ = 1.849
+
+Numerical MLE (verification):
+  μ̂ = 9.549
+  σ̂ = 1.849
+
+Comparison with true values:
+  μ: error = 0.451
+  σ: error = 0.151
+```
+
+![Plot](images/output_194f7e84594e.png)
+
+
 ## Example 3: Poisson Distribution
 
 ### Problem
@@ -308,19 +344,19 @@ Count data \(x_1, \ldots, x_n \sim \text{Poisson}(\lambda)\). Estimate λ.
 **PMF**: \(P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}\)
 
 **Log-likelihood**:
-\[
+$$
 \ell(\lambda) = \sum_{i=1}^{n}\left[x_i\log\lambda - \lambda - \log(x_i!)\right]
-\]
+$$
 
 **Derivative**:
-\[
+$$
 \frac{d\ell}{d\lambda} = \frac{1}{\lambda}\sum_{i=1}^{n}x_i - n = 0
-\]
+$$
 
 **MLE**:
-\[
+$$
 \hat{\lambda}_{\text{MLE}} = \frac{1}{n}\sum_{i=1}^{n}x_i = \bar{x}
-\]
+$$
 
 The MLE is the sample mean!
 
@@ -395,6 +431,10 @@ plt.savefig('poisson_mle.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+`Error: AttributeError: module 'scipy.stats' has no attribute 'factorial'`
+
+
 ## Properties of MLEs
 
 ### 1. Consistency
@@ -404,9 +444,9 @@ As \(n \to \infty\), \(\hat{\theta}_{\text{MLE}} \to \theta_{\text{true}}\) (in 
 ### 2. Asymptotic Normality
 
 For large n:
-\[
+$$
 \hat{\theta}_{\text{MLE}} \sim N\left(\theta, \frac{1}{nI(\theta)}\right)
-\]
+$$
 
 where \(I(\theta)\) is the **Fisher Information**.
 
@@ -423,18 +463,18 @@ If \(\hat{\theta}\) is the MLE of θ, then \(g(\hat{\theta})\) is the MLE of \(g
 ### Using Asymptotic Normality
 
 For large n:
-\[
+$$
 \hat{\theta} \pm z_{\alpha/2} \cdot \text{SE}(\hat{\theta})
-\]
+$$
 
 where SE is estimated from Fisher Information or observed information.
 
 ### Profile Likelihood
 
 More accurate for small samples:
-\[
+$$
 \{\theta: 2(\ell(\hat{\theta}) - \ell(\theta)) \leq \chi^2_{1,\alpha}\}
-\]
+$$
 
 ## Numerical MLE
 
@@ -458,6 +498,12 @@ print(f"MLE: {mle_params}")
 print(f"Negative log-likelihood: {result.fun}")
 print(f"Success: {result.success}")
 ```
+
+**Output:**
+```
+Error: TypeError: float() argument must be a string or a real number, not 'ellipsis'
+```
+
 
 ## Summary
 

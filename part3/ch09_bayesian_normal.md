@@ -17,25 +17,25 @@ This represents our belief about \(\mu\) before seeing data.
 ### Likelihood
 
 For a single observation:
-\[
+$$
 p(x \mid \mu) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
-\]
+$$
 
 For n observations:
-\[
+$$
 p(x_1, \ldots, x_n \mid \mu) \propto \exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i - \mu)^2\right)
-\]
+$$
 
 ### Posterior Derivation
 
 Applying Bayes' theorem:
-\[
+$$
 p(\mu \mid x_1, \ldots, x_n) \propto p(x_1, \ldots, x_n \mid \mu) \cdot p(\mu)
-\]
+$$
 
-\[
+$$
 \propto \exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i - \mu)^2\right) \cdot \exp\left(-\frac{(\mu - \mu_0)^2}{2\sigma_0^2}\right)
-\]
+$$
 
 Completing the square (algebra omitted), we get:
 
@@ -43,25 +43,25 @@ Completing the square (algebra omitted), we get:
 
 where:
 
-\[
+$$
 \sigma_n^2 = \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}
-\]
+$$
 
-\[
+$$
 \mu_n = \sigma_n^2 \left(\frac{\mu_0}{\sigma_0^2} + \frac{n\bar{x}}{\sigma^2}\right)
-\]
+$$
 
 ### Precision Form (Cleaner)
 
 Define **precision** \(\tau = 1/\sigma^2\):
 
-\[
+$$
 \tau_n = \tau_0 + n\tau \quad \text{(precisions add!)}
-\]
+$$
 
-\[
+$$
 \mu_n = \frac{\tau_0 \mu_0 + n\tau\bar{x}}{\tau_n}
-\]
+$$
 
 The posterior mean is a **precision-weighted average** of prior mean and sample mean.
 
@@ -157,6 +157,24 @@ plt.savefig('bayesian_normal_mean.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Bayesian Inference for Normal Mean
+======================================================================
+True μ: 10, True σ: 2
+Prior: N(5, 5²)
+Known σ: 2
+
+n= 1: x̄= 10.99, Posterior N(10.17, 1.86²), 95% CI=[6.53, 13.81]
+n= 5: x̄= 10.92, Posterior N(10.73, 0.88²), 95% CI=[9.01, 12.46]
+n=10: x̄= 10.90, Posterior N(10.80, 0.63²), 95% CI=[9.57, 12.03]
+n=20: x̄=  9.66, Posterior N(9.62, 0.45²), 95% CI=[8.75, 10.49]
+n=50: x̄=  9.55, Posterior N(9.53, 0.28²), 95% CI=[8.98, 10.09]
+```
+
+![Plot](images/output_e7182d5bf2a3.png)
+
+
 ## Normal Distribution with Unknown Variance
 
 ### Setup
@@ -170,21 +188,21 @@ plt.show()
 **Conjugate prior**: \(\sigma^2 \sim \text{Inverse-Gamma}(\alpha, \beta)\)
 
 PDF:
-\[
+$$
 p(\sigma^2) = \frac{\beta^\alpha}{\Gamma(\alpha)}(\sigma^2)^{-(\alpha+1)}\exp\left(-\frac{\beta}{\sigma^2}\right)
-\]
+$$
 
 ### Likelihood
 
-\[
+$$
 p(x_1, \ldots, x_n \mid \sigma^2) \propto (\sigma^2)^{-n/2}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i-\mu)^2\right)
-\]
+$$
 
 ### Posterior
 
-\[
+$$
 \sigma^2 \mid x_1, \ldots, x_n \sim \text{Inverse-Gamma}\left(\alpha + \frac{n}{2}, \beta + \frac{1}{2}\sum_{i=1}^{n}(x_i-\mu)^2\right)
-\]
+$$
 
 ### Python Example
 
@@ -278,6 +296,27 @@ print(f"\n95% Credible Interval for σ²: [{ci_lower:.3f}, {ci_upper:.3f}]")
 print(f"True σ² = {true_sigma2} is {'inside' if ci_lower <= true_sigma2 <= ci_upper else 'outside'} the interval")
 ```
 
+**Output:**
+```
+Bayesian Inference for Normal Variance
+======================================================================
+True σ²: 4
+Known μ: 0
+Sample size: 30
+
+Prior: Inverse-Gamma(3, 2)
+  Prior mean: 1.00
+
+Posterior: Inverse-Gamma(18.0, 51.10)
+  Posterior mean: 3.01
+
+95% Credible Interval for σ²: [1.878, 4.790]
+True σ² = 4 is inside the interval
+```
+
+![Plot](images/output_ee0fdd2ef278.png)
+
+
 ## Normal with Both Parameters Unknown
 
 ### The Challenge
@@ -287,9 +326,9 @@ When **both** \(\mu\) and \(\sigma^2\) are unknown, we need a **joint prior**.
 ### Normal-Gamma Conjugate Prior
 
 **Joint prior**: 
-\[
+$$
 p(\mu, \sigma^2) = p(\mu \mid \sigma^2) \cdot p(\sigma^2)
-\]
+$$
 
 where:
 - \(\sigma^2 \sim \text{Inverse-Gamma}(\alpha, \beta)\)
@@ -308,39 +347,39 @@ This is called the **Normal-Gamma** (or **Normal-Inverse-Gamma**) distribution.
 
 Given data \(x_1, \ldots, x_n\):
 
-\[
+$$
 \mu, \sigma^2 \mid x_1, \ldots, x_n \sim \text{Normal-Gamma}(\mu_n, \kappa_n, \alpha_n, \beta_n)
-\]
+$$
 
 where:
 
-\[
+$$
 \kappa_n = \kappa_0 + n
-\]
+$$
 
-\[
+$$
 \mu_n = \frac{\kappa_0 \mu_0 + n\bar{x}}{\kappa_n}
-\]
+$$
 
-\[
+$$
 \alpha_n = \alpha + \frac{n}{2}
-\]
+$$
 
-\[
+$$
 \beta_n = \beta + \frac{1}{2}\sum_{i=1}^{n}(x_i - \bar{x})^2 + \frac{\kappa_0 n(\bar{x} - \mu_0)^2}{2\kappa_n}
-\]
+$$
 
 ### Marginal Posteriors
 
 **For \(\sigma^2\)**:
-\[
+$$
 \sigma^2 \mid x_1, \ldots, x_n \sim \text{Inverse-Gamma}(\alpha_n, \beta_n)
-\]
+$$
 
 **For \(\mu\)** (marginalized over \(\sigma^2\)):
-\[
+$$
 \mu \mid x_1, \ldots, x_n \sim t_{2\alpha_n}\left(\mu_n, \frac{\beta_n}{\alpha_n \kappa_n}\right)
-\]
+$$
 
 This is a **Student's t-distribution** with \(2\alpha_n\) degrees of freedom!
 
@@ -456,23 +495,47 @@ plt.savefig('bayesian_normal_both.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Bayesian Inference for Normal (both parameters unknown)
+======================================================================
+True parameters: μ = 10, σ² = 4
+Data: n = 20, x̄ = 9.66
+
+Prior: Normal-Gamma(8, 1, 2, 2)
+
+Posterior: Normal-Gamma(9.58, 21, 12.0, 38.33)
+
+Posterior mean of μ: 9.58
+Posterior mean of σ²: 3.48
+
+Marginal posterior for μ: t_{24}(9.58, 0.39²)
+95% Credible Interval for μ: [8.77, 10.38]
+
+Marginal posterior for σ²: Inverse-Gamma(12.0, 38.33)
+95% Credible Interval for σ²: [1.95, 6.18]
+```
+
+![Plot](images/output_bf2c79a0c64c.png)
+
+
 ## Posterior Predictive Distribution
 
 ### Definition
 
 Predict a **new observation** \(\tilde{x}\) given observed data:
 
-\[
+$$
 p(\tilde{x} \mid x_1, \ldots, x_n) = \int p(\tilde{x} \mid \mu, \sigma^2) p(\mu, \sigma^2 \mid x_1, \ldots, x_n) d\mu d\sigma^2
-\]
+$$
 
 ### Result for Normal-Gamma
 
 The posterior predictive is a **Student's t-distribution**:
 
-\[
+$$
 \tilde{x} \mid x_1, \ldots, x_n \sim t_{2\alpha_n}\left(\mu_n, \frac{\beta_n(\kappa_n+1)}{\alpha_n\kappa_n}\right)
-\]
+$$
 
 ### Python Example
 
@@ -500,6 +563,23 @@ print(f"  95% CI for μ:          [{ci_mu_lower:.2f}, {ci_mu_upper:.2f}]  (width
 print(f"  95% Prediction interval: [{pred_lower:.2f}, {pred_upper:.2f}]  (width: {pred_upper-pred_lower:.2f})")
 print(f"\nPrediction interval is wider (accounts for data variability + parameter uncertainty)")
 ```
+
+**Output:**
+```
+Posterior Predictive Distribution
+======================================================================
+Distribution: t_{24}(9.58, 1.83²)
+95% Prediction Interval: [5.80, 13.35]
+
+This interval will contain the next observation with 95% probability
+
+Comparison:
+  95% CI for μ:          [8.77, 10.38]  (width: 1.61)
+  95% Prediction interval: [5.80, 13.35]  (width: 7.55)
+
+Prediction interval is wider (accounts for data variability + parameter uncertainty)
+```
+
 
 ## Summary
 

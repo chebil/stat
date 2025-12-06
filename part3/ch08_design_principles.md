@@ -75,6 +75,34 @@ print("Treatment Assignment Summary:")
 print(df['Treatment'].value_counts().sort_index())
 ```
 
+**Output:**
+```
+Randomized Group Assignments
+============================================================
+
+Group_A:
+Student_20, Student_17, Student_16, Student_27, Student_05, Student_13, Student_38, Student_28, Student_40, Student_07
+
+Group_B:
+Student_26, Student_10, Student_14, Student_32, Student_35, Student_09, Student_18, Student_25, Student_01, Student_34
+
+Group_C:
+Student_06, Student_12, Student_02, Student_30, Student_22, Student_03, Student_31, Student_37, Student_04, Student_36
+
+Group_D:
+Student_24, Student_33, Student_11, Student_23, Student_19, Student_21, Student_08, Student_15, Student_29, Student_39
+
+============================================================
+Treatment Assignment Summary:
+Treatment
+A    10
+B    10
+C    10
+D    10
+Name: count, dtype: int64
+```
+
+
 ## Replication
 
 ### What is Replication?
@@ -149,6 +177,21 @@ for name, f in effect_sizes.items():
 print("\nNote: These are approximations. Use specialized software for")
 print("      precise power analysis (e.g., G*Power, R pwr package)")
 ```
+
+**Output:**
+```
+Required Sample Size per Group (Power = 0.80)
+============================================================
+Effect Size     Cohen's f    n per group     Total N   
+------------------------------------------------------------
+small           0.10         275             1100      
+medium          0.25         46              184       
+large           0.40         20              80        
+
+Note: These are approximations. Use specialized software for
+      precise power analysis (e.g., G*Power, R pwr package)
+```
+
 
 ## Blocking
 
@@ -264,15 +307,19 @@ print(f"With blocking:    p = {p_treatment:.4f}")
 print(f"\nBlocking {'increased' if p_treatment < p_no_block else 'decreased'} power!")
 ```
 
+**Output:**
+`Error: NameError: name 'p_treatment' is not defined`
+
+
 ### Efficiency of Blocking
 
 Blocking **increases power** by removing block-to-block variation from the error term.
 
 **Relative Efficiency**:
 
-\[
+$$
 \text{RE} = \frac{\text{MSE (unblocked)}}{\text{MSE (blocked)}}
-\]
+$$
 
 RE > 1 means blocking was beneficial.
 
@@ -296,6 +343,9 @@ design_crd = pd.DataFrame({
     'Treatment': ['A']*10 + ['B']*10 + ['C']*10
 })
 ```
+
+**Output:** `(No output)`
+
 
 ### 2. Randomized Complete Block Design (RCBD)
 
@@ -391,6 +441,17 @@ treatments = ['Control', 'TreatA', 'TreatB', 'TreatC']
 assignment = randomize_assignment(subjects, treatments, method='balanced')
 print(assignment.groupby('Treatment').size())
 ```
+
+**Output:**
+```
+Treatment
+Control    10
+TreatA     10
+TreatB     10
+TreatC     10
+dtype: int64
+```
+
 
 ### Dealing with Missing Data
 

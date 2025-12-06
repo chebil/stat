@@ -423,6 +423,56 @@ plt.savefig('f_test_chi_square_tests.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+============================================================
+F-TEST EXAMPLE: Comparing Variances
+============================================================
+Sample 1: n=15, variance=98.83
+Sample 2: n=20, variance=28.71
+F-statistic: 3.443
+Degrees of freedom: (14, 19)
+Critical value (α=0.05): 2.647
+P-value: 0.0135
+Conclusion: Reject H₀ - Variances are significantly different
+
+============================================================
+χ² GOODNESS-OF-FIT TEST EXAMPLE: Testing a Die
+============================================================
+Total rolls: 60
+Observed: [ 8 12  9 11 13  7]
+Expected: [10. 10. 10. 10. 10. 10.]
+
+χ² statistic: 2.800
+Degrees of freedom: 5
+Critical value (α=0.05): 11.070
+P-value: 0.7308
+Conclusion: Fail to reject H₀ - Die appears fair
+
+Verification with scipy.stats.chisquare:
+χ² = 2.800, p-value = 0.7308
+
+============================================================
+χ² TEST OF INDEPENDENCE EXAMPLE: Contingency Table
+============================================================
+Contingency table:
+           Success  Failure
+Treatment A:  50      150
+Treatment B:  20      180
+
+χ² statistic: 14.563
+Degrees of freedom: 1
+P-value: 0.0001
+Conclusion: Reject H₀ - Treatment and outcome are dependent
+
+Expected frequencies under independence:
+[[ 35. 165.]
+ [ 35. 165.]]
+```
+
+![Plot](images/output_8045821c2fc0.png)
+
+
 ## Key Takeaways
 
 ### F-Tests

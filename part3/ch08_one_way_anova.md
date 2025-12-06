@@ -12,9 +12,9 @@ With k = 4 groups:
 - Number of pairwise comparisons = C(4,2) = 6
 - If each test has α = 0.05, probability of **at least one** Type I error:
 
-\[
+$$
 P(\text{at least one false positive}) = 1 - (1-0.05)^6 \approx 0.26
-\]
+$$
 
 That's a 26% chance of a false discovery!
 
@@ -35,9 +35,9 @@ We have:
 
 For observation j in group i:
 
-\[
+$$
 y_{ij} = \mu_i + \epsilon_{ij}
-\]
+$$
 
 where:
 - \(\mu_i\) is the mean of group i
@@ -54,9 +54,9 @@ where:
 
 How much do observations vary overall?
 
-\[
+$$
 \text{SST (Total Sum of Squares)} = \sum_{i=1}^{k}\sum_{j=1}^{n_i} (y_{ij} - \bar{y})^2
-\]
+$$
 
 where \(\bar{y}\) is the grand mean of all observations.
 
@@ -64,23 +64,23 @@ where \(\bar{y}\) is the grand mean of all observations.
 
 How much do **group means** differ from the grand mean?
 
-\[
+$$
 \text{SSB (Between Sum of Squares)} = \sum_{i=1}^{k} n_i(\bar{y}_i - \bar{y})^2
-\]
+$$
 
 ### Within-Group Variation
 
 How much do observations vary **within** each group?
 
-\[
+$$
 \text{SSW (Within Sum of Squares)} = \sum_{i=1}^{k}\sum_{j=1}^{n_i} (y_{ij} - \bar{y}_i)^2
-\]
+$$
 
 ### The Key Relationship
 
-\[
+$$
 \text{SST} = \text{SSB} + \text{SSW}
-\]
+$$
 
 Total variation = Variation between groups + Variation within groups
 
@@ -90,19 +90,19 @@ Total variation = Variation between groups + Variation within groups
 
 Convert sums of squares to **mean squares** (variances) by dividing by degrees of freedom:
 
-\[
+$$
 \text{MSB} = \frac{\text{SSB}}{k-1} \quad \text{(between-group variance)}
-\]
+$$
 
-\[
+$$
 \text{MSW} = \frac{\text{SSW}}{N-k} \quad \text{(within-group variance)}
-\]
+$$
 
 ### The Test Statistic
 
-\[
+$$
 F = \frac{\text{MSB}}{\text{MSW}}
-\]
+$$
 
 ### Logic
 
@@ -287,6 +287,59 @@ plt.savefig('one_way_anova.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+One-Way ANOVA: Fertilizer Comparison
+======================================================================
+Fertilizer A: mean = 21.38, std = 1.69
+Fertilizer B: mean = 26.00, std = 1.31
+Fertilizer C: mean = 19.38, std = 1.06
+Fertilizer D: mean = 24.38, std = 1.06
+
+H₀: μ_A = μ_B = μ_C = μ_D
+H₁: At least one mean is different
+
+F-statistic: 41.516
+P-value: 0.000000
+
+Decision: Reject H₀ (p = 0.0000 < 0.05)
+Conclusion: At least one fertilizer has a different effect.
+
+======================================================================
+Manual ANOVA Calculation
+======================================================================
+Grand mean: 22.781
+Number of groups (k): 4
+Total observations (N): 32
+
+SST (Total Sum of Squares): 259.469
+SSB (Between Sum of Squares): 211.844
+SSW (Within Sum of Squares): 47.625
+Verification: SSB + SSW = 259.469 = SST
+
+df (between): 3
+df (within): 28
+df (total): 31
+
+MSB (Mean Square Between): 70.615
+MSW (Mean Square Within): 1.701
+
+F-statistic: 41.516
+P-value: 0.000000
+
+======================================================================
+ANOVA Table
+======================================================================
+Source                    SS     df           MS          F    p-value
+----------------------------------------------------------------------
+Between Groups       211.844      3       70.615     41.516   0.000000
+Within Groups         47.625     28        1.701
+Total                259.469     31
+```
+
+![Plot](images/output_279385664902.png)
+
+
 ## Post-Hoc Tests: Which Groups Differ?
 
 ### The Problem
@@ -338,6 +391,21 @@ group_names = ['A', 'B', 'C', 'D']
 tukey_result = tukey_hsd_test(data_groups, group_names)
 ```
 
+**Output:**
+```
+Tukey's HSD Post-Hoc Test
+======================================================================
+Comparison              Mean Diff     Lower CI     Upper CI    Reject H₀
+----------------------------------------------------------------------
+A vs B                     -4.625       -6.405       -2.845          Yes
+A vs C                      2.000        0.220        3.780          Yes
+A vs D                     -3.000       -4.780       -1.220          Yes
+B vs C                      6.625        4.845        8.405          Yes
+B vs D                      1.625       -0.155        3.405           No
+C vs D                     -5.000       -6.780       -3.220          Yes
+```
+
+
 ## ANOVA Assumptions
 
 ### Three Key Assumptions
@@ -384,6 +452,21 @@ check_normality([fertilizer_A, fertilizer_B, fertilizer_C, fertilizer_D],
                 ['A', 'B', 'C', 'D'])
 ```
 
+**Output:**
+```
+Normality Tests (Shapiro-Wilk)
+============================================================
+Group              Statistic      p-value      Normal?
+------------------------------------------------------------
+A                     0.9657       0.8619          Yes
+B                     0.9651       0.8568          Yes
+C                     0.9116       0.3657          Yes
+D                     0.9116       0.3657          Yes
+```
+
+![Plot](images/output_e0f39d6673c3.png)
+
+
 ### Checking Homogeneity of Variance
 
 **Levene's Test**:
@@ -410,15 +493,25 @@ check_homogeneity([fertilizer_A, fertilizer_B, fertilizer_C, fertilizer_D],
                   ['A', 'B', 'C', 'D'])
 ```
 
+**Output:**
+```
+Homogeneity of Variance (Levene's Test)
+============================================================
+Test statistic: 0.9934
+P-value: 0.4103
+Conclusion: Equal variances (p > 0.05)
+```
+
+
 ## Effect Size: Eta-Squared (η²)
 
 ### Definition
 
 Proportion of total variance explained by group membership:
 
-\[
+$$
 \eta^2 = \frac{\text{SSB}}{\text{SST}}
-\]
+$$
 
 ### Interpretation
 
@@ -449,6 +542,14 @@ else:
 print(f"Effect size is: {effect}")
 ```
 
+**Output:**
+```
+Effect Size (η²): 0.816
+Interpretation: 81.6% of variance explained by fertilizer type
+Effect size is: large
+```
+
+
 ## When ANOVA Assumptions Fail
 
 ### Non-Normal Data
@@ -467,6 +568,14 @@ print(f"H-statistic: {H_stat:.3f}")
 print(f"P-value: {p_value_kw:.4f}")
 ```
 
+**Output:**
+```
+Kruskal-Wallis Test (Non-Parametric ANOVA)
+H-statistic: 25.041
+P-value: 0.0000
+```
+
+
 ### Unequal Variances
 
 **Welch's ANOVA**:
@@ -483,6 +592,10 @@ try:
 except ImportError:
     print("Install statsmodels for Welch's ANOVA")
 ```
+
+**Output:**
+`Install statsmodels for Welch's ANOVA`
+
 
 ## Summary
 

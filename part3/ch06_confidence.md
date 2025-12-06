@@ -16,15 +16,15 @@ This accounts for the fact that \(\bar{x}\) is based on a sample and has variabi
 
 A **confidence interval** for a parameter θ has the form:
 
-\[
+$$
 \text{estimate} \pm \text{margin of error}
-\]
+$$
 
 More precisely:
 
-\[
+$$
 \bar{x} \pm z_{\alpha/2} \cdot \text{SE}(\bar{x})
-\]
+$$
 
 where:
 - \(\bar{x}\) is the sample mean (our estimate)
@@ -57,9 +57,9 @@ The formula \(\text{SE}(\bar{X}) = \frac{\sigma}{\sqrt{n}}\) requires knowing σ
 
 We estimate σ using the **sample standard deviation**:
 
-\[
+$$
 s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}
-\]
+$$
 
 Note the \(n-1\) in the denominator (Bessel's correction) - this makes s an unbiased estimator of σ.
 
@@ -67,9 +67,9 @@ Note the \(n-1\) in the denominator (Bessel's correction) - this makes s an unbi
 
 When we replace σ with s, the distribution changes from normal to **t-distribution**:
 
-\[
+$$
 \frac{\bar{X} - \mu}{s/\sqrt{n}} \sim t_{n-1}
-\]
+$$
 
 where \(t_{n-1}\) is the t-distribution with \(n-1\) degrees of freedom.
 
@@ -84,17 +84,17 @@ where \(t_{n-1}\) is the t-distribution with \(n-1\) degrees of freedom.
 
 A \((1-\alpha) \times 100\%\) confidence interval for μ is:
 
-\[
+$$
 \bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
-\]
+$$
 
 ### Case 2: Unknown Population Variance (σ² unknown) - Most Common!
 
 A \((1-\alpha) \times 100\%\) confidence interval for μ is:
 
-\[
+$$
 \bar{x} \pm t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}
-\]
+$$
 
 where \(t_{\alpha/2, n-1}\) is the critical value from the t-distribution with \(n-1\) degrees of freedom.
 
@@ -164,6 +164,27 @@ for conf in [0.90, 0.95, 0.99]:
     width = upper - lower
     print(f"{int(conf*100)}% CI: [{lower:6.2f}, {upper:6.2f}]  Width: {width:5.2f}  Margin: {margin:5.2f}")
 ```
+
+**Output:**
+```
+Sample mean: 73.12
+Sample std: 9.00
+Sample size: 30
+
+95% Confidence Interval: [69.76, 76.48]
+Margin of error: 3.36
+
+Interpretation: We are 95% confident that the true mean score
+is between 69.76 and 76.48.
+
+============================================================
+Comparison of Different Confidence Levels
+============================================================
+90% CI: [ 70.33,  75.91]  Width:  5.58  Margin:  2.79
+95% CI: [ 69.76,  76.48]  Width:  6.72  Margin:  3.36
+99% CI: [ 68.59,  77.65]  Width:  9.06  Margin:  4.53
+```
+
 
 **Output**:
 ```
@@ -245,15 +266,27 @@ print(f"  {n_intervals-n_contain} ({(n_intervals-n_contain)/n_intervals*100:.1f}
 print(f"\nExpected: ~95% should contain the true mean")
 ```
 
+**Output:**
+```
+Out of 100 confidence intervals:
+  99 (99.0%) contain the true mean
+  1 (1.0%) do not
+
+Expected: ~95% should contain the true mean
+```
+
+![Plot](images/output_b7bc7328a975.png)
+
+
 ## The Central Limit Theorem and CIs
 
 ### Why CIs Work
 
 The Central Limit Theorem states that for large n:
 
-\[
+$$
 \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
-\]
+$$
 
 approximately, regardless of the population distribution!
 
@@ -309,6 +342,10 @@ for pop_name, pop_func in populations.items():
     plt.savefig(f'clt_{pop_name.lower()}.png', dpi=150, bbox_inches='tight')
     plt.show()
 ```
+
+**Output:**
+![Plot](images/output_faf0db61136c.png)
+
 
 ## Standard Error from Simulation (Bootstrap)
 
@@ -391,6 +428,24 @@ print(f"\nTraditional 95% CI for mean: [{traditional_lower:.3f}, {traditional_up
 print(f"Traditional SE: {stats.sem(data):.3f}")
 ```
 
+**Output:**
+```
+Original sample:
+  Mean: 4.230
+  Median: 2.864
+  n = 50
+
+Bootstrap 95% CI for mean: [3.057, 5.491]
+Bootstrap SE: 0.621
+
+Bootstrap 95% CI for median: [1.724, 4.133]
+Bootstrap SE: 0.697
+
+Traditional 95% CI for mean: [2.960, 5.500]
+Traditional SE: 0.632
+```
+
+
 **Output**:
 ```
 Original sample:
@@ -452,18 +507,22 @@ ci_upper = mean + margin  # 127.99
 print(f"95% CI: [{ci_lower:.2f}, {ci_upper:.2f}]")
 ```
 
+**Output:**
+`95% CI: [112.01, 127.99]`
+
+
 **Answer**: [112.01, 127.99] hours
 
 ### Problem 2: Sample Size for Desired Margin
 You want a 95% CI for mean height with margin of error ± 2 cm. If σ = 10 cm, how large a sample do you need?
 
 **Solution**:
-\[
+$$
 E = z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \implies 2 = 1.96 \cdot \frac{10}{\sqrt{n}}
-\]
-\[
+$$
+$$
 \sqrt{n} = \frac{1.96 \times 10}{2} = 9.8 \implies n = 96.04 \approx 97
-\]
+$$
 
 **Answer**: Need n = 97 people
 
@@ -477,14 +536,14 @@ Two 95% CIs are constructed: [45, 55] and [47, 53]. Which is based on a larger s
 ### Key Formulas
 
 **95% CI for population mean** (σ unknown):
-\[
+$$
 \bar{x} \pm t_{0.025, n-1} \cdot \frac{s}{\sqrt{n}}
-\]
+$$
 
 **Sample size for desired margin E**:
-\[
+$$
 n = \left(\frac{z_{\alpha/2} \cdot \sigma}{E}\right)^2
-\]
+$$
 
 ### Key Concepts
 

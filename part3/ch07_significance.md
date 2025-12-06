@@ -39,9 +39,9 @@ We have:
 
 **P-value**: The probability of observing data as extreme as (or more extreme than) what we actually observed, **assuming H₀ is true**.
 
-\[
+$$
 \text{p-value} = P(\text{data as extreme or more} \mid H_0 \text{ is true})
-\]
+$$
 
 ### Interpretation
 
@@ -191,6 +191,25 @@ plt.savefig('coin_test.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+H₀: The coin is fair (p = 0.5)
+H₁: The coin is not fair (p ≠ 0.5)
+
+Under H₀: Number of heads ~ N(50.0, 5.00²)
+
+Observed: 60 heads
+Z-score: 2.000
+
+P-value (two-tailed): 0.0455
+
+Decision: p-value (0.0455) < α (0.05)
+Reject H₀. Evidence suggests the coin is biased.
+```
+
+![Plot](images/output_1f236d962352.png)
+
+
 **Output**:
 ```
 H₀: The coin is fair (p = 0.5)
@@ -299,6 +318,33 @@ print(f"\n95% Confidence Interval: [{ci_lower:.1f}, {ci_upper:.1f}]")
 print(f"Claimed value {claim_mean} is {'NOT' if claim_mean < ci_lower or claim_mean > ci_upper else ''} in the CI")
 ```
 
+**Output:**
+```
+Hypothesis Test: One-Sample t-test
+==================================================
+H₀: μ = 1000 (manufacturer's claim is true)
+H₁: μ ≠ 1000 (manufacturer's claim is false)
+Significance level: α = 0.05
+
+Sample mean: 950
+Sample std: 100
+Standard error: 20.00
+t-statistic: -2.500
+Degrees of freedom: 24
+
+P-value: 0.0197
+
+Decision: p-value (0.0197) < α (0.05)
+Reject H₀. The manufacturer's claim is questionable.
+
+Verification using scipy.stats.ttest_1samp:
+t-statistic: -2.500, p-value: 0.0197
+
+95% Confidence Interval: [908.7, 991.3]
+Claimed value 1000 is NOT in the CI
+```
+
+
 **Output**:
 ```
 Hypothesis Test: One-Sample t-test
@@ -404,6 +450,12 @@ for es in effect_sizes:
             break
 ```
 
+**Output:**
+```
+Error: SyntaxError: unterminated string literal (detected at line 32) (<string>, line 32)
+```
+
+
 ## Summary
 
 ### The Hypothesis Testing Recipe
@@ -418,14 +470,14 @@ for es in effect_sizes:
 ### Key Formulas
 
 **One-sample t-test**:
-\[
+$$
 t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}} \sim t_{n-1}
-\]
+$$
 
 **Z-test** (σ known):
-\[
+$$
 z = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}} \sim N(0,1)
-\]
+$$
 
 ### Important Points
 

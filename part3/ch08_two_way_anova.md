@@ -35,9 +35,9 @@ Studies **two factors simultaneously**:
 
 ### The Model
 
-\[
+$$
 y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \epsilon_{ijk}
-\]
+$$
 
 where:
 - \(\mu\) = grand mean
@@ -110,9 +110,9 @@ Crossing lines = Interaction!
 
 ### Sum of Squares Decomposition
 
-\[
+$$
 \text{SST} = \text{SSA} + \text{SSB} + \text{SSAB} + \text{SSE}
-\]
+$$
 
 where:
 - **SST**: Total sum of squares
@@ -131,9 +131,9 @@ where:
 
 ### F-Statistics
 
-\[
+$$
 F_A = \frac{\text{MSA}}{\text{MSE}}, \quad F_B = \frac{\text{MSB}}{\text{MSE}}, \quad F_{AB} = \frac{\text{MSAB}}{\text{MSE}}
-\]
+$$
 
 ## Python Example: Fertilizer × Watering
 
@@ -269,6 +269,38 @@ plt.savefig('two_way_anova.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
+**Output:**
+```
+Two-Way ANOVA: Fertilizer × Watering
+======================================================================
+
+Data Summary:
+                  mean       std  count
+Fertilizer Water                       
+F1         High   23.4  1.140175      5
+           Low    18.4  1.140175      5
+F2         High   29.4  1.140175      5
+           Low    20.6  1.140175      5
+F3         High   20.6  1.140175      5
+           Low    17.4  1.140175      5
+
+Please install statsmodels: pip install statsmodels
+Performing manual calculation...
+
+Cell means:
+Fertilizer  Water
+F1          High     23.4
+            Low      18.4
+F2          High     29.4
+            Low      20.6
+F3          High     20.6
+            Low      17.4
+Name: Yield, dtype: float64
+```
+
+![Plot](images/output_aea5c7c106b9.png)
+
+
 ## Interpreting Interactions
 
 ### Rule of Thumb
@@ -313,6 +345,10 @@ if p_interaction < 0.05:
     simple_effects_analysis(df, 'Fertilizer', 'Water', 'Yield')
 ```
 
+**Output:**
+`Error: NameError: name 'p_interaction' is not defined`
+
+
 ## Balanced vs. Unbalanced Designs
 
 ### Balanced Design
@@ -341,9 +377,9 @@ if p_interaction < 0.05:
 
 Proportion of variance explained by each factor, **controlling for** other factors:
 
-\[
+$$
 \eta^2_p(A) = \frac{\text{SSA}}{\text{SSA} + \text{SSE}}
-\]
+$$
 
 ```python
 def partial_eta_squared(anova_table):
@@ -372,6 +408,10 @@ def partial_eta_squared(anova_table):
 
 partial_eta_squared(anova_table)
 ```
+
+**Output:**
+`Error: NameError: name 'anova_table' is not defined`
+
 
 ## Assumptions of Two-Way ANOVA
 
@@ -420,6 +460,16 @@ def check_two_way_assumptions(df, factor1, factor2, response):
 
 check_two_way_assumptions(df, 'Fertilizer', 'Water', 'Yield')
 ```
+
+**Output:**
+```
+Homogeneity of Variance (Levene's Test)
+  Statistic = 0.000, p-value = 1.0000
+  → Assumption satisfied (p > 0.05)
+
+Install statsmodels to check normality of residuals
+```
+
 
 ## Summary
 
