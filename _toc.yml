@@ -1,6 +1,6 @@
 # Table of Contents
 format: jb-book
-root: intro
+root: intro.ipynb
 parts:
   - caption: Part I - Describing Datasets
     chapters:
