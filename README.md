@@ -26,7 +26,10 @@ jupyter-book build .
 jupyter-book clean .
 jupyter-book build .
 ```
-
+### Live reload using Sphinx
+```bash
+sphinx-autobuild . _build/html
+```
 ## Book Structure
 
 - **Part I: Describing Datasets** - Visualization and descriptive statistics
