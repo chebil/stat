@@ -19,6 +19,8 @@ parts:
           title: "1.5 Australian Pizzas Case Study"
         - file: part1/ch01_you_should
           title: "1.6 You Should Know"
+        - file: part1/ch01_assignment
+          title: "1.7 Assignment: Exploring Global Data"
     - file: part1/chapter02
       title: "Chapter 2: Looking at Relationships"
       sections:
