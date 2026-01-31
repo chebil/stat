@@ -30,6 +30,8 @@ parts:
           title: "2.2 Correlation"
         - file: part2/ch02_you_should
           title: "2.3 You Should Know"
+        - file: part1/ch02_assignment
+          title: "2.4 Assignment: Analyzing Relationships"
 
   - caption: Part II - Probability
     chapters:

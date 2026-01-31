@@ -36,8 +36,8 @@ repository:
 
 # Configure the base URL for GitHub Pages
 html:
-  use_issues_button: true
-  use_repository_button: true
+  use_issues_button: false
+  use_repository_button: false
   baseurl: /stat/
   home_page_in_navbar: true
   use_edit_page_button: false
@@ -69,8 +69,8 @@ sphinx:
     nb_output_stderr: remove
     html_theme_options:
       repository_url: https://github.com/chebil/stat
-      use_repository_button: true
+      use_repository_button: false
       use_download_button: true
-      use_issues_button: true
+      use_issues_button: false
       path_to_docs: ""
       repository_branch: main
